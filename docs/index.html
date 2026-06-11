@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Эвелина Исмагилова — Data Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a1d23;
+    --ink-soft:#4a4f5a;
+    --ink-faint:#6b7280;
+    --paper:#fffefd;
+    --line:#dce0e6;
+    --accent:#144369;
+    --accent-soft:#e6edf4;
+    --chip:#eef1f5;
+    --max:880px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:'Inter',-apple-system,system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.55;
+    font-size:15px;
+    padding:48px 24px 80px;
+  }
+  .sheet{max-width:var(--max);margin:0 auto;position:relative}
+
+  /* ---------- language toggle ---------- */
+  .lang-toggle{
+    position:fixed;top:20px;right:20px;z-index:50;
+    display:inline-flex;border:1px solid var(--line);border-radius:8px;
+    overflow:hidden;font-family:'JetBrains Mono',monospace;font-size:12px;
+    background:var(--paper);box-shadow:0 1px 4px rgba(20,67,105,.08);
+  }
+  .lang-toggle button{
+    border:0;background:transparent;color:var(--ink-faint);
+    padding:7px 13px;cursor:pointer;font:inherit;letter-spacing:.5px;
+    transition:background .15s,color .15s;
+  }
+  .lang-toggle button.active{background:var(--accent);color:#fff}
+  .lang-toggle button:not(.active):hover{color:var(--accent)}
+
+  /* ---------- header ---------- */
+  header{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:24px;flex-wrap:wrap;
+    border-bottom:2px solid var(--ink);
+    padding-bottom:20px;
+  }
+  .name{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:42px;
+    line-height:1;
+    letter-spacing:-.5px;
+  }
+  .role{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+    color:var(--accent);
+    margin-top:10px;
+    letter-spacing:.3px;
+  }
+  .contact{
+    text-align:right;
+    font-size:13px;
+    color:var(--ink-soft);
+    line-height:1.7;
+  }
+  .contact a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line)}
+  .contact a:hover{color:var(--accent);border-color:var(--accent)}
+
+  /* ---------- summary ---------- */
+  .summary{
+    font-size:16px;
+    line-height:1.6;
+    color:var(--ink-soft);
+    margin:24px 0 8px;
+    max-width:62ch;
+  }
+  .summary strong{color:var(--ink);font-weight:600}
+
+  /* ---------- section scaffolding ---------- */
+  section{margin-top:34px}
+  .sec-head{
+    display:flex;align-items:baseline;gap:12px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-bottom:18px;
+  }
+  .sec-head::after{
+    content:"";flex:1;height:1px;background:var(--line);
+  }
+
+  /* ---------- skills ---------- */
+  .skills{display:grid;grid-template-columns:128px 1fr;gap:6px 18px;font-size:14px}
+  .skills dt{font-weight:600;color:var(--ink)}
+  .skills dd{color:var(--ink-soft)}
+  .skills dd b{color:var(--ink);font-weight:500}
+
+  /* ---------- entries ---------- */
+  .entry{margin-bottom:26px}
+  .entry:last-child{margin-bottom:0}
+  .entry-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+  .entry-title{font-weight:600;font-size:15.5px}
+  .entry-org{color:var(--accent);font-weight:500}
+  .entry-meta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;color:var(--ink-faint);white-space:nowrap;
+  }
+  .entry ul{list-style:none;margin-top:9px}
+  .entry li{
+    position:relative;padding-left:18px;margin-bottom:5px;
+    color:var(--ink-soft);font-size:14px;line-height:1.5;
+  }
+  .entry li::before{
+    content:"";position:absolute;left:2px;top:9px;
+    width:5px;height:5px;border-radius:50%;background:var(--accent);
+  }
+  .entry li b{color:var(--ink);font-weight:600}
+
+  /* ---------- projects ---------- */
+  .project{
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px 20px;
+    margin-bottom:14px;
+    background:#fff;
+  }
+  .project:last-child{margin-bottom:0}
+  .proj-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .proj-name{font-weight:600;font-size:15.5px}
+  .proj-links{font-family:'JetBrains Mono',monospace;font-size:11.5px;white-space:nowrap}
+  .proj-links a{
+    color:var(--accent);text-decoration:none;
+    border:1px solid var(--accent-soft);background:var(--accent-soft);
+    padding:2px 8px;border-radius:5px;margin-left:6px;
+    display:inline-block;
+  }
+  .proj-links a:hover{background:var(--accent);color:#fff}
+  .proj-desc{color:var(--ink-soft);font-size:14px;margin:8px 0 10px;line-height:1.5}
+  .proj-desc b{color:var(--ink);font-weight:600}
+  .stack{display:flex;flex-wrap:wrap;gap:6px}
+  .stack span{
+    font-family:'JetBrains Mono',monospace;font-size:11px;
+    background:var(--chip);color:var(--ink-soft);
+    padding:3px 8px;border-radius:5px;
+  }
+
+  /* ---------- two-col footer block ---------- */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+  .mini li{position:relative;padding-left:16px;margin-bottom:4px;color:var(--ink-soft);font-size:14px;list-style:none}
+  .mini li::before{content:"—";position:absolute;left:0;color:var(--accent)}
+  .mini b{color:var(--ink);font-weight:600}
+
+  a.plain{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-soft)}
+  a.plain:hover{border-color:var(--accent)}
+
+  /* ---------- language switching ---------- */
+  [data-lang]{display:none}
+  body.lang-ru [data-lang="ru"]{display:revert}
+  body.lang-en [data-lang="en"]{display:revert}
+  body.lang-ru span[data-lang="ru"],
+  body.lang-en span[data-lang="en"],
+  body.lang-ru b[data-lang="ru"],
+  body.lang-en b[data-lang="en"]{display:inline}
+
+  @media (max-width:640px){
+    body{padding:28px 16px 60px;font-size:14px}
+    .name{font-size:30px}
+    .contact{text-align:left}
+    header{align-items:flex-start}
+    .skills{grid-template-columns:1fr;gap:2px 0}
+    .skills dt{margin-top:8px}
+    .grid2{grid-template-columns:1fr;gap:24px}
+    .lang-toggle{top:12px;right:12px}
+  }
+
+  @media print{
+    .lang-toggle{display:none}
+    body{padding:0;background:#fff;font-size:9.5px}
+    .sheet{max-width:100%}
+    .project{break-inside:avoid;background:#fff;padding:11px 15px;margin-bottom:9px}
+    .entry{margin-bottom:14px}
+    .grid2 .entry{margin-bottom:10px}
+    section{margin-top:15px}
+    .summary{margin:16px 0 6px}
+    .proj-desc{margin:6px 0 8px}
+    .proj-links a{border-color:var(--line)}
+    a{color:var(--ink)!important}
+  }
+</style>
+</head>
+<body class="lang-ru">
+
+<div class="lang-toggle">
+  <button id="btn-ru" class="active" onclick="setLang('ru')">RU</button>
+  <button id="btn-en" onclick="setLang('en')">EN</button>
+</div>
+
+<div class="sheet">
+
+  <header>
+    <div>
+      <div class="name">
+        <span data-lang="ru">Эвелина Исмагилова</span>
+        <span data-lang="en">Evelina Ismagilova</span>
+      </div>
+      <div class="role">DATA ENGINEER · PYTHON / SQL · ETL <span data-lang="ru">И АНАЛИТИКА</span><span data-lang="en">&amp; ANALYTICS</span></div>
+    </div>
+    <div class="contact">
+      <span data-lang="ru">Ташкент, Узбекистан (UTC+5) · готова к удалёнке / релокации</span>
+      <span data-lang="en">Tashkent, Uzbekistan (UTC+5) · open to remote / relocation</span><br>
+      <a href="mailto:ismevelina@gmail.com">ismevelina@gmail.com</a> · +998 33 375 47 48<br>
+      <a href="https://github.com/amelylina">github.com/amelylina</a> ·
+      <a href="https://t.me/pepe_the_king_prawn">@pepe_the_king_prawn</a>
+    </div>
+  </header>
+
+  <p class="summary" data-lang="ru">
+    Инженер, создающий <strong>дата-пайплайны и аналитические платформы</strong> на Python и SQL.
+    1,5+ года коммерческого Python (процедурный 3D-инструмент для сотен внутренних пользователей),
+    сейчас фокус на data engineering: оркестрация ETL, размерное моделирование, BI.<br>
+    <strong>Английский — Advanced (IELTS 7.5)</strong>, русский — родной.
+  </p>
+  <p class="summary" data-lang="en">
+    Engineer who builds <strong>data pipelines and analytics platforms</strong> in Python and SQL.
+    1.5+ years of commercial Python (a procedural 3D tool used by hundreds of internal users),
+    now focused on data engineering: ETL orchestration, dimensional modeling, BI.<br>
+    <strong>English — Advanced (IELTS 7.5)</strong>, native Russian.
+  </p>
+
+  <section>
+    <div class="sec-head"><span data-lang="ru">Технические навыки</span><span data-lang="en">Technical skills</span></div>
+    <dl class="skills">
+      <dt><span data-lang="ru">Языки</span><span data-lang="en">Languages</span></dt>
+      <dd><b>Python</b> <span data-lang="ru">(основной)</span><span data-lang="en">(primary)</span>, <b>SQL</b> (PostgreSQL / PL-pgSQL, Vertica, MongoDB), C++, <span data-lang="ru">базовый Kotlin</span><span data-lang="en">basic Kotlin</span></dd>
+      <dt><span data-lang="ru">Данные и ETL</span><span data-lang="en">Data &amp; ETL</span></dt>
+      <dd>Apache Airflow, Spark, pandas, NumPy, Alembic, Microsoft Fabric (medallion lakehouse)</dd>
+      <dt>Backend</dt>
+      <dd>FastAPI, Streamlit, REST API, <span data-lang="ru">Telegram-боты</span><span data-lang="en">Telegram bots</span>, Docker</dd>
+      <dt>BI</dt>
+      <dd>Power BI, Metabase, Grafana, Plotly</dd>
+      <dt><span data-lang="ru">Процессы</span><span data-lang="en">Workflow</span></dt>
+      <dd><span data-lang="ru">Git, моделирование данных (star schema), инкрементальная загрузка по watermark/партициям, ETL, SCD</span><span data-lang="en">Git, data modeling (star schema), watermark/partition-based incremental loads, ETL, SCD</span></dd>
+    </dl>
+  </section>
+
+  <section>
+    <div class="sec-head"><span data-lang="ru">Опыт работы</span><span data-lang="en">Experience</span></div>
+
+    <div class="entry">
+      <div class="entry-top">
+        <div>
+          <span class="entry-title"><span data-lang="ru">Инженер-разработчик — процедурный 3D / Python</span><span data-lang="en">Software Engineer — Procedural 3D / Python</span></span>, <span class="entry-org">AX Technology (R&amp;D)</span>
+        </div>
+        <div class="entry-meta"><span data-lang="ru">май 2024 – фев 2025</span><span data-lang="en">May 2024 – Feb 2025</span></div>
+      </div>
+      <ul>
+        <li data-lang="ru">Единственный разработчик внутреннего Python-аддона, <b>которым пользуются сотни пользователей</b>; существенно повысила эффективность их работы.</li>
+        <li data-lang="en">Sole developer of an internal Python addon <b>used by hundreds of users</b>, significantly increasing their workflow efficiency.</li>
+
+        <li data-lang="ru">Автоматизировала рабочие процессы через процедурную генерацию, <b>сократив ручные операции на порядки</b>.</li>
+        <li data-lang="en">Automated production workflows through procedural generation, <b>reducing manual operations by orders of magnitude</b>.</li>
+
+        <li data-lang="ru">Разработала <b>эвристический алгоритм поиска</b> для упаковки UV-островов в текстурном пространстве — меньше пустого места, выше качество текстур.</li>
+        <li data-lang="en">Designed a <b>heuristic search algorithm</b> for UV-island packing in texture space — less wasted space, higher texture quality.</li>
+
+        <li data-lang="ru">Реализовала серверную обработку изображений на <b>Pillow + NumPy</b> (операции с матрицей пикселей) для переноса текстур между моделями без запекания.</li>
+        <li data-lang="en">Built server-side image processing with <b>Pillow + NumPy</b> (pixel-matrix operations) to transfer texture data between models without baking.</li>
+
+        <li data-lang="ru">Написала <b>собственные C++ библиотеки</b> для ресурсоёмких вычислений; вела проект в Git.</li>
+        <li data-lang="en">Wrote <b>custom C++ libraries</b> for performance-critical computation; version-controlled the project in Git.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-top">
+        <div>
+          <span class="entry-title"><span data-lang="ru">Фриланс: 3D-художник и разработчик инструментов</span><span data-lang="en">Freelance 3D Artist &amp; Tooling Developer</span></span>, <span class="entry-org"><span data-lang="ru">игровые / mod-сообщества</span><span data-lang="en">game / mod communities</span></span>
+        </div>
+        <div class="entry-meta">~2017 – 2024</div>
+      </div>
+      <ul>
+        <li data-lang="ru">Самостоятельно освоила 3D-моделирование с 16 лет; <b>создавала, продавала и поддерживала</b> модели и моды для активного сообщества.</li>
+        <li data-lang="en">Self-taught 3D modeling from age 16; <b>created, sold, and supported</b> models and mods for an active community.</li>
+
+        <li data-lang="ru">Выстроила стабильный доход — эта самостоятельная работа напрямую привела к первой инженерной должности выше.</li>
+        <li data-lang="en">Built a steady income stream — this self-directed work led directly to the first engineering role above.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span data-lang="ru">Избранные проекты</span><span data-lang="en">Selected projects</span></div>
+
+    <div class="project">
+      <div class="proj-top">
+        <div class="proj-name">NYC Mobility × Air Quality — Microsoft Fabric platform</div>
+        <div class="proj-links">
+          <a href="https://github.com/amelylina/taxi-air-quality-fabric"><span data-lang="ru">код →</span><span data-lang="en">code →</span></a>
+        </div>
+      </div>
+      <div class="proj-desc" data-lang="ru">
+        Сквозной <b>medallion-lakehouse (Bronze → Silver → Gold)</b>, собирающий три открытых источника (такси NYC, качество воздуха OpenAQ, экономика World Bank / ECB) через четыре паттерна загрузки. <b>Оркестрация на метаданных</b>: watermark’и, статус по партициям, метахранилище; секреты через Key Vault. Star-schema, питающая семантическую модель Power BI.
+      </div>
+      <div class="proj-desc" data-lang="en">
+        End-to-end <b>medallion lakehouse (Bronze → Silver → Gold)</b> ingesting three open-data sources (NYC taxi, OpenAQ air quality, World Bank / ECB economics) through four ingestion patterns. <b>Metadata-driven orchestration</b>: watermarks, per-partition status, a metadata warehouse; secrets via Key Vault. Star-schema feeding a Power BI semantic model.
+      </div>
+      <div class="stack"><span>Microsoft Fabric</span><span>Python</span><span>PySpark</span><span>T-SQL</span><span>Data Pipelines</span><span>Power BI</span><span>Grafana</span><span>Power Automate</span><span>Telegram-bot</span></div>
+    </div>
+
+    <div class="project">
+      <div class="proj-top">
+        <div class="proj-name">SQL Faker — deterministic data generator in stored procedures</div>
+        <div class="proj-links">
+          <a href="https://sql-faker-1uu2.onrender.com/"><span data-lang="ru">демо →</span><span data-lang="en">demo →</span></a>
+          <a href="https://github.com/amelylina/sql-faker"><span data-lang="ru">код →</span><span data-lang="en">code →</span></a>
+        </div>
+      </div>
+      <div class="proj-desc" data-lang="ru">
+        Воспроизводимый генератор фейковых пользователей, где <b>вся случайность — в хранимых процедурах PL-pgSQL</b>. Спроектировала stateless хеш-PRNG, устойчивый к параллельным/непоследовательным вызовам; реализовала Box-Muller и равноплощадную выборку на сфере. Ускорила с ~1000 до <b>~2100 польз./сек</b> через кеш пикеров. Фронт на FastAPI, развёрнут на Render + Neon.
+      </div>
+      <div class="proj-desc" data-lang="en">
+        Reproducible fake-user generator where <b>all randomness lives in PL-pgSQL stored procedures</b>. Designed a stateless hash-based PRNG robust to parallel/out-of-order calls; implemented Box-Muller and equal-area sphere sampling. Sped it up from ~1000 to <b>~2100 users/sec</b> via a picker cache. FastAPI front end, deployed on Render + Neon.
+      </div>
+      <div class="stack"><span>PostgreSQL</span><span>PL-pgSQL</span><span>FastAPI</span><span>Docker</span><span>Render</span></div>
+    </div>
+
+    <div class="project">
+      <div class="proj-top">
+        <div class="proj-name">Mining Ops — anomaly-detection dashboard</div>
+        <div class="proj-links">
+          <a href="https://amelylina-weyland-yutani-mining.streamlit.app"><span data-lang="ru">демо →</span><span data-lang="en">demo →</span></a>
+          <a href="https://github.com/amelylina/weyland-yutani-mining"><span data-lang="ru">код →</span><span data-lang="en">code →</span></a>
+        </div>
+      </div>
+      <div class="proj-desc" data-lang="ru">
+        Streamlit-дашборд с <b>четырьмя настраиваемыми тестами на аномалии</b> (IQR, Z-score, скользящее среднее, тест Граббса), графики Plotly с трендами и <b>экспорт PDF-отчёта</b> в один клик. Чистая модульная структура; читает живой CSV-фид, сгенерированный в Google Spreadsheets.
+      </div>
+      <div class="proj-desc" data-lang="en">
+        Streamlit dashboard with <b>four configurable anomaly tests</b> (IQR, Z-score, moving average, Grubbs'), Plotly charts with trendlines, and one-click <b>PDF report export</b>. Clean modular structure; reads a live CSV feed generated in Google Sheets.
+      </div>
+      <div class="stack"><span>Python</span><span>Streamlit</span><span>pandas</span><span>Plotly</span><span>ReportLab</span></div>
+    </div>
+
+    <p class="summary" data-lang="ru" style="font-size:13.5px;margin:14px 0 0">
+      Больше — на <a class="plain" href="https://github.com/amelylina">github.com/amelylina</a>.
+    </p>
+    <p class="summary" data-lang="en" style="font-size:13.5px;margin:14px 0 0">
+      More at <a class="plain" href="https://github.com/amelylina">github.com/amelylina</a>.
+    </p>
+  </section>
+
+  <section>
+    <div class="grid2">
+      <div>
+        <div class="sec-head"><span data-lang="ru">Образование и обучение</span><span data-lang="en">Education &amp; training</span></div>
+
+        <div class="entry" style="margin-bottom:14px">
+          <div class="entry-title"><span data-lang="ru">Программа «Инженер данных»</span><span data-lang="en">Data Engineering Program</span></div>
+          <div class="entry-org" style="font-size:14px">Yandex Practicum</div>
+          <div class="entry-meta" style="margin-top:3px"><span data-lang="ru">завершение июль 2026 · 4–5 практических проектов</span><span data-lang="en">completing Jul 2026 · 4–5 hands-on projects</span></div>
+        </div>
+
+        <div class="entry" style="margin-bottom:14px">
+          <div class="entry-title"><span data-lang="ru">Стажировка по Data Engineering</span><span data-lang="en">Data Engineering Internship</span></div>
+          <div class="entry-org" style="font-size:14px">Itransition</div>
+          <div class="entry-meta" style="margin-top:3px"><span data-lang="ru">2-месячный интенсив · сертификат</span><span data-lang="en">2-month intensive · certificate</span></div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-title"><span data-lang="ru">Бакалавр, лечебное дело</span><span data-lang="en">BSc, General Medicine</span></div>
+          <div class="entry-org" style="font-size:14px"><span data-lang="ru">Ташкентский гос. стоматологический институт</span><span data-lang="en">Tashkent State Dental Institute</span></div>
+          <div class="entry-meta" style="margin-top:3px"><span data-lang="ru">окончание 2025</span><span data-lang="en">graduated 2025</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="sec-head"><span data-lang="ru">Языки и прочее</span><span data-lang="en">Languages &amp; more</span></div>
+        <ul class="mini">
+          <li data-lang="ru"><b>Русский</b> — родной</li>
+          <li data-lang="en"><b>Russian</b> — native</li>
+          <li data-lang="ru"><b>Английский</b> — advanced (IELTS 7.5)</li>
+          <li data-lang="en"><b>English</b> — advanced (IELTS 7.5)</li>
+          <li data-lang="ru"><b>Узбекский</b> — базовый · <b>Китайский</b> — базовое чтение</li>
+          <li data-lang="en"><b>Uzbek</b> — basic · <b>Chinese</b> — basic reading</li>
+          <li data-lang="ru">Опыт спортивного программирования (C++, Codeforces)</li>
+          <li data-lang="en">Competitive programming background (C++, Codeforces)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  function setLang(lang){
+    document.body.classList.remove('lang-ru','lang-en');
+    document.body.classList.add('lang-'+lang);
+    document.documentElement.lang = lang;
+    document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
+    document.getElementById('btn-en').classList.toggle('active', lang==='en');
+    document.title = (lang==='ru' ? 'Эвелина Исмагилова' : 'Evelina Ismagilova') + ' — Data Engineer';
+  }
+  // Auto-fill any element with class "year" with the current year
+  document.querySelectorAll('.year').forEach(function(el){ el.textContent = new Date().getFullYear(); });
+  // Open in EN automatically for non-Russian browsers
+  if ((navigator.language || '').slice(0,2) !== 'ru'){ setLang('en'); }
+</script>
+</body>
+</html>
