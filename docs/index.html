@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Эвелина Исмагилова — Data Engineer</title>
+<meta name="description" content="Data Engineer — Python / SQL. ETL orchestration (Airflow, dbt), dimensional modeling, medallion lakehouses on Microsoft Fabric. Open to remote / relocation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -82,7 +83,7 @@
     line-height:1.6;
     color:var(--ink-soft);
     margin:24px 0 8px;
-    max-width:62ch;
+    max-width:66ch;
   }
   .summary strong{color:var(--ink);font-weight:600}
 
@@ -102,7 +103,7 @@
   }
 
   /* ---------- skills ---------- */
-  .skills{display:grid;grid-template-columns:128px 1fr;gap:6px 18px;font-size:14px}
+  .skills{display:grid;grid-template-columns:150px 1fr;gap:7px 18px;font-size:14px}
   .skills dt{font-weight:600;color:var(--ink)}
   .skills dd{color:var(--ink-soft)}
   .skills dd b{color:var(--ink);font-weight:500}
@@ -127,6 +128,8 @@
     width:5px;height:5px;border-radius:50%;background:var(--accent);
   }
   .entry li b{color:var(--ink);font-weight:600}
+  .entry-note{color:var(--ink-soft);font-size:14px;line-height:1.5;margin-top:7px}
+  .entry-note b{color:var(--ink);font-weight:600}
 
   /* ---------- projects ---------- */
   .project{
@@ -136,9 +139,16 @@
     margin-bottom:14px;
     background:#fff;
   }
+  .project.flagship{border-color:var(--accent-soft);box-shadow:0 1px 0 var(--accent-soft), 0 0 0 3px var(--accent-soft) inset;background:linear-gradient(180deg,#fbfcfe 0%,#fff 60%)}
   .project:last-child{margin-bottom:0}
   .proj-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
   .proj-name{font-weight:600;font-size:15.5px}
+  .proj-tag{
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.5px;
+    text-transform:uppercase;color:var(--accent);
+    background:var(--accent-soft);border-radius:4px;padding:2px 7px;
+    margin-left:9px;vertical-align:middle;white-space:nowrap;
+  }
   .proj-links{font-family:'JetBrains Mono',monospace;font-size:11.5px;white-space:nowrap}
   .proj-links a{
     color:var(--accent);text-decoration:none;
@@ -190,9 +200,10 @@
     body{padding:0;background:#fff;font-size:9.5px}
     .sheet{max-width:100%}
     .project{break-inside:avoid;background:#fff;padding:11px 15px;margin-bottom:9px}
+    .project.flagship{box-shadow:none;border-color:var(--accent);background:#fff}
     .entry{margin-bottom:14px}
     .grid2 .entry{margin-bottom:10px}
-    section{margin-top:15px}
+    section{margin-top:15px;break-inside:avoid}
     .summary{margin:16px 0 6px}
     .proj-desc{margin:6px 0 8px}
     .proj-links a{border-color:var(--line)}
@@ -215,11 +226,11 @@
         <span data-lang="ru">Эвелина Исмагилова</span>
         <span data-lang="en">Evelina Ismagilova</span>
       </div>
-      <div class="role">DATA ENGINEER · PYTHON / SQL · ETL <span data-lang="ru">И АНАЛИТИКА</span><span data-lang="en">&amp; ANALYTICS</span></div>
+      <div class="role">DATA ENGINEER · PYTHON / SQL · AIRFLOW · DBT · SPARK</div>
     </div>
     <div class="contact">
-      <span data-lang="ru">Ташкент, Узбекистан (UTC+5) · готова к удалёнке / релокации</span>
-      <span data-lang="en">Tashkent, Uzbekistan (UTC+5) · open to remote / relocation</span><br>
+      <span data-lang="ru">Ташкент, Узбекистан (UTC+5) · удалёнка / релокация</span>
+      <span data-lang="en">Tashkent, Uzbekistan (UTC+5) · remote / relocation</span><br>
       <a href="mailto:ismevelina@gmail.com">ismevelina@gmail.com</a> · +998 33 375 47 48<br>
       <a href="https://github.com/amelylina">github.com/amelylina</a> ·
       <a href="https://t.me/pepe_the_king_prawn">@pepe_the_king_prawn</a>
@@ -227,15 +238,17 @@
   </header>
 
   <p class="summary" data-lang="ru">
-    Инженер, создающий <strong>дата-пайплайны и аналитические платформы</strong> на Python и SQL.
-    1,5+ года коммерческого Python (процедурный 3D-инструмент для сотен внутренних пользователей),
-    сейчас фокус на data engineering: оркестрация ETL, размерное моделирование, BI.<br>
-    <strong>Английский — Advanced (IELTS 7.5)</strong>, русский — родной.
+    Data-инженер, проектирующий <strong>пайплайны и аналитические платформы</strong> на Python и SQL — от загрузки источников до star-schema и BI.
+    Я создаю <strong>идемпотентные ETL-процессы на Airflow / dbt</strong> с инкрементальной загрузкой по watermark, многомерным моделированием и обеспечением качества данных на каждом уровне.
+    Имею <strong>1,5 лет опыта работы с коммерческим Python</strong> (инструмент, используемый сотнями пользователей) и production-shaped портфолио.<br>
+    Квалифицированный <strong>врач</strong>, выбравшая разработку систем — я комфортно чувствую себя в условиях стресса, неопределенности и высокой стоимости ошибок.<br>
+    <strong>Английский — продвинутый уровень (IELTS 7.5)</strong>, родной русский.
   </p>
   <p class="summary" data-lang="en">
-    Engineer who builds <strong>data pipelines and analytics platforms</strong> in Python and SQL.
-    1.5+ years of commercial Python (a procedural 3D tool used by hundreds of internal users),
-    now focused on data engineering: ETL orchestration, dimensional modeling, BI.<br>
+    Data engineer who designs <strong>pipelines and analytics platforms</strong> in Python and SQL — from source ingestion through star-schema modeling to BI.
+    I build <strong>idempotent ETL on Airflow / dbt</strong> with watermark-based incremental loads, dimensional modeling, and data quality at every layer.
+    Backed by <strong>1.5+ years of commercial Python</strong> (a tool used by hundreds of users) and a portfolio of production-shaped platforms.<br>
+    Qualified <strong>physician</strong> who chose to build systems instead — I work comfortably under stress, uncertainty, and the high cost of error.<br>
     <strong>English — Advanced (IELTS 7.5)</strong>, native Russian.
   </p>
 
@@ -243,112 +256,87 @@
     <div class="sec-head"><span data-lang="ru">Технические навыки</span><span data-lang="en">Technical skills</span></div>
     <dl class="skills">
       <dt><span data-lang="ru">Языки</span><span data-lang="en">Languages</span></dt>
-      <dd><b>Python</b> <span data-lang="ru">(основной)</span><span data-lang="en">(primary)</span>, <b>SQL</b> (PostgreSQL / PL-pgSQL, Vertica, MongoDB), C++, <span data-lang="ru">базовый Kotlin</span><span data-lang="en">basic Kotlin</span></dd>
-      <dt><span data-lang="ru">Данные и ETL</span><span data-lang="en">Data &amp; ETL</span></dt>
-      <dd>Apache Airflow, Spark, pandas, NumPy, Alembic, Microsoft Fabric (medallion lakehouse)</dd>
-      <dt>Backend</dt>
-      <dd>FastAPI, Streamlit, REST API, <span data-lang="ru">Telegram-боты</span><span data-lang="en">Telegram bots</span>, Docker</dd>
-      <dt>BI</dt>
-      <dd>Power BI, Metabase, Grafana, Plotly</dd>
-      <dt><span data-lang="ru">Процессы</span><span data-lang="en">Workflow</span></dt>
-      <dd><span data-lang="ru">Git, моделирование данных (star schema), инкрементальная загрузка по watermark/партициям, ETL, SCD</span><span data-lang="en">Git, data modeling (star schema), watermark/partition-based incremental loads, ETL, SCD</span></dd>
+      <dd><b>Python</b> <span data-lang="ru">(основной)</span><span data-lang="en">(primary)</span>, <b>SQL</b> (PostgreSQL / PL-pgSQL, T-SQL, Vertica), C++, <span data-lang="ru">базовый Kotlin</span><span data-lang="en">basic Kotlin</span></dd>
+
+      <dt><span data-lang="ru">Оркестрация и ETL</span><span data-lang="en">Orchestration &amp; ETL</span></dt>
+      <dd><b>Apache Airflow</b>, <b>dbt</b>, Alembic, <span data-lang="ru">инкрементальная загрузка (watermark / партиции), идемпотентные upsert’ы, SCD</span><span data-lang="en">incremental loads (watermark / partition), idempotent upserts, SCD</span></dd>
+
+      <dt><span data-lang="ru">Big Data и хранилища</span><span data-lang="en">Big Data &amp; storage</span></dt>
+      <dd><b>Apache Spark / PySpark</b>, Kafka, Hadoop / HDFS, Microsoft Fabric <span data-lang="ru">(medallion lakehouse, Delta)</span><span data-lang="en">(medallion lakehouse, Delta)</span>, MongoDB, MinIO / S3</dd>
+
+      <dt><span data-lang="ru">Моделирование</span><span data-lang="en">Modeling</span></dt>
+      <dd><span data-lang="ru"><b>Star schema</b>, конформные измерения, суррогатные ключи, data quality (dbt tests, Great Expectations), оконные функции, CTE</span><span data-lang="en"><b>Star schema</b>, conformed dimensions, surrogate keys, data quality (dbt tests, Great Expectations), window functions, CTE</span></dd>
+
+      <dt>BI &amp; <span data-lang="ru">сервисы</span><span data-lang="en">services</span></dt>
+      <dd>Power BI, Metabase, Grafana, Plotly · FastAPI, REST API, Docker, <span data-lang="ru">Telegram-боты</span><span data-lang="en">Telegram bots</span></dd>
     </dl>
-  </section>
-
-  <section>
-    <div class="sec-head"><span data-lang="ru">Опыт работы</span><span data-lang="en">Experience</span></div>
-
-    <div class="entry">
-      <div class="entry-top">
-        <div>
-          <span class="entry-title"><span data-lang="ru">Инженер-разработчик — процедурный 3D / Python</span><span data-lang="en">Software Engineer — Procedural 3D / Python</span></span>, <span class="entry-org">AX Technology (R&amp;D)</span>
-        </div>
-        <div class="entry-meta"><span data-lang="ru">май 2024 – фев 2025</span><span data-lang="en">May 2024 – Feb 2025</span></div>
-      </div>
-      <ul>
-        <li data-lang="ru">Единственный разработчик внутреннего Python-аддона, <b>которым пользуются сотни пользователей</b>; существенно повысила эффективность их работы.</li>
-        <li data-lang="en">Sole developer of an internal Python addon <b>used by hundreds of users</b>, significantly increasing their workflow efficiency.</li>
-
-        <li data-lang="ru">Автоматизировала рабочие процессы через процедурную генерацию, <b>сократив ручные операции на порядки</b>.</li>
-        <li data-lang="en">Automated production workflows through procedural generation, <b>reducing manual operations by orders of magnitude</b>.</li>
-
-        <li data-lang="ru">Разработала <b>эвристический алгоритм поиска</b> для упаковки UV-островов в текстурном пространстве — меньше пустого места, выше качество текстур.</li>
-        <li data-lang="en">Designed a <b>heuristic search algorithm</b> for UV-island packing in texture space — less wasted space, higher texture quality.</li>
-
-        <li data-lang="ru">Реализовала серверную обработку изображений на <b>Pillow + NumPy</b> (операции с матрицей пикселей) для переноса текстур между моделями без запекания.</li>
-        <li data-lang="en">Built server-side image processing with <b>Pillow + NumPy</b> (pixel-matrix operations) to transfer texture data between models without baking.</li>
-
-        <li data-lang="ru">Написала <b>собственные C++ библиотеки</b> для ресурсоёмких вычислений; вела проект в Git.</li>
-        <li data-lang="en">Wrote <b>custom C++ libraries</b> for performance-critical computation; version-controlled the project in Git.</li>
-      </ul>
-    </div>
-
-    <div class="entry">
-      <div class="entry-top">
-        <div>
-          <span class="entry-title"><span data-lang="ru">Фриланс: 3D-художник и разработчик инструментов</span><span data-lang="en">Freelance 3D Artist &amp; Tooling Developer</span></span>, <span class="entry-org"><span data-lang="ru">игровые / mod-сообщества</span><span data-lang="en">game / mod communities</span></span>
-        </div>
-        <div class="entry-meta">~2017 – 2024</div>
-      </div>
-      <ul>
-        <li data-lang="ru">Самостоятельно освоила 3D-моделирование с 16 лет; <b>создавала, продавала и поддерживала</b> модели и моды для активного сообщества.</li>
-        <li data-lang="en">Self-taught 3D modeling from age 16; <b>created, sold, and supported</b> models and mods for an active community.</li>
-
-        <li data-lang="ru">Выстроила стабильный доход — эта самостоятельная работа напрямую привела к первой инженерной должности выше.</li>
-        <li data-lang="en">Built a steady income stream — this self-directed work led directly to the first engineering role above.</li>
-      </ul>
-    </div>
   </section>
 
   <section>
     <div class="sec-head"><span data-lang="ru">Избранные проекты</span><span data-lang="en">Selected projects</span></div>
 
+    <div class="project flagship">
+      <div class="proj-top">
+        <div class="proj-name">ShrimpOverflow<span class="proj-tag">Airflow · dbt</span></div>
+        <div class="proj-links">
+          <a href="https://github.com/amelylina/shrimp-overflow"><span data-lang="ru">код →</span><span data-lang="en">code →</span></a>
+        </div>
+      </div>
+      <div class="proj-desc" data-lang="ru">
+        Аналитическое хранилище для маркетплейса доставки, поднимается <b>одной командой локально</b>. Сводит <b>четыре разнородных источника</b> (документы / Mongo-паттерн, PostgreSQL, REST API, S3) в слои <b>stg → dds → cdm</b>: стейдж через Airflow с инкрементальной загрузкой по watermark, ядро измерений на dbt, <b>SCD2-снапшоты</b> и пять бизнес-витрин. <b>Asset-driven</b> оркестрация (dbt-трансформации стартуют по data-assets, не по таймеру), <b>сквозная observability</b> (история загрузок и результаты тестов пишутся в etl-схему) и <b>демо инкрементальности</b>: дозалив N строк → загружаются ровно новые, открываются версии SCD2.
+      </div>
+      <div class="proj-desc" data-lang="en">
+        A delivery-marketplace analytics warehouse that stands up with <b>one local command</b>. Unifies <b>four heterogeneous sources</b> (document / Mongo pattern, PostgreSQL, REST API, S3) into <b>stg → dds → cdm</b> layers: Airflow ingestion with watermark-based incremental loads, a dbt dimensional core with <b>SCD2 snapshots</b>, and five business marts. <b>Asset-driven</b> orchestration (dbt transforms fire on data assets, not a timer), <b>end-to-end observability</b> (load history and test results logged to an etl schema), and a <b>provable incremental demo</b>: append N rows → exactly the new rows load and SCD2 versions open.
+      </div>
+      <div class="stack"><span>Apache Airflow</span><span>dbt</span><span>PostgreSQL</span><span>Docker Compose</span><span>Alembic</span><span>MinIO / S3</span><span>FastAPI</span><span>SCD2</span></div>
+    </div>
+
     <div class="project">
       <div class="proj-top">
-        <div class="proj-name">NYC Mobility × Air Quality — Microsoft Fabric platform</div>
+        <div class="proj-name">NYC Mobility × Air Quality<span class="proj-tag">Fabric · Spark</span></div>
         <div class="proj-links">
           <a href="https://github.com/amelylina/taxi-air-quality-fabric"><span data-lang="ru">код →</span><span data-lang="en">code →</span></a>
         </div>
       </div>
       <div class="proj-desc" data-lang="ru">
-        Сквозной <b>medallion-lakehouse (Bronze → Silver → Gold)</b>, собирающий три открытых источника (такси NYC, качество воздуха OpenAQ, экономика World Bank / ECB) через четыре паттерна загрузки. <b>Оркестрация на метаданных</b>: watermark’и, статус по партициям, метахранилище; секреты через Key Vault. Star-schema, питающая семантическую модель Power BI.
+        Сквозной <b>medallion-lakehouse (Bronze → Silver → Gold)</b> на Microsoft Fabric: <b>шесть источников</b> трёх доменов (такси NYC, воздух OpenAQ, экономика World Bank / ECB) через четыре паттерна загрузки. <b>Оркестрация на метаданных</b>: state-machine по партициям, watermark’и, метахранилище со stored-процедурами; PySpark-инджест с <b>rate-limiter и потоками</b>, гео-join сенсоров и зон. Data-quality на Great Expectations с алертами в Telegram. Star-schema → семантическая модель и отчёт Power BI.
       </div>
       <div class="proj-desc" data-lang="en">
-        End-to-end <b>medallion lakehouse (Bronze → Silver → Gold)</b> ingesting three open-data sources (NYC taxi, OpenAQ air quality, World Bank / ECB economics) through four ingestion patterns. <b>Metadata-driven orchestration</b>: watermarks, per-partition status, a metadata warehouse; secrets via Key Vault. Star-schema feeding a Power BI semantic model.
+        End-to-end <b>medallion lakehouse (Bronze → Silver → Gold)</b> on Microsoft Fabric: <b>six sources</b> across three domains (NYC taxi, OpenAQ air quality, World Bank / ECB economics) via four ingestion patterns. <b>Metadata-driven orchestration</b>: a per-partition state machine, watermarks, a metadata warehouse with stored procedures; PySpark ingestion with a <b>threaded rate limiter</b> and a sensor-to-zone spatial join. Great Expectations data quality with Telegram alerts. Star-schema → Power BI semantic model and report.
       </div>
-      <div class="stack"><span>Microsoft Fabric</span><span>Python</span><span>PySpark</span><span>T-SQL</span><span>Data Pipelines</span><span>Power BI</span><span>Grafana</span><span>Power Automate</span><span>Telegram-bot</span></div>
+      <div class="stack"><span>Microsoft Fabric</span><span>PySpark</span><span>Delta Lake</span><span>T-SQL</span><span>GeoPandas</span><span>Great Expectations</span><span>Power BI</span><span>Grafana</span><span>Azure Key Vault</span></div>
     </div>
 
     <div class="project">
       <div class="proj-top">
-        <div class="proj-name">SQL Faker — deterministic data generator in stored procedures</div>
+        <div class="proj-name">SQL Faker<span class="proj-tag">PL/pgSQL</span></div>
         <div class="proj-links">
           <a href="https://sql-faker-1uu2.onrender.com/"><span data-lang="ru">демо →</span><span data-lang="en">demo →</span></a>
           <a href="https://github.com/amelylina/sql-faker"><span data-lang="ru">код →</span><span data-lang="en">code →</span></a>
         </div>
       </div>
       <div class="proj-desc" data-lang="ru">
-        Воспроизводимый генератор фейковых пользователей, где <b>вся случайность — в хранимых процедурах PL-pgSQL</b>. Спроектировала stateless хеш-PRNG, устойчивый к параллельным/непоследовательным вызовам; реализовала Box-Muller и равноплощадную выборку на сфере. Ускорила с ~1000 до <b>~2100 польз./сек</b> через кеш пикеров. Фронт на FastAPI, развёрнут на Render + Neon.
+        Воспроизводимый генератор данных, где <b>вся случайность живёт в хранимых процедурах PL/pgSQL</b>. Спроектировала stateless хеш-PRNG, устойчивый к параллельным / непоследовательным вызовам; реализовала Box-Muller и равноплощадную выборку на сфере. Ускорила с ~1000 до <b>~2100 польз./сек</b> через кеш пикеров. Бэкенд на FastAPI, деплой на Render + Neon.
       </div>
       <div class="proj-desc" data-lang="en">
-        Reproducible fake-user generator where <b>all randomness lives in PL-pgSQL stored procedures</b>. Designed a stateless hash-based PRNG robust to parallel/out-of-order calls; implemented Box-Muller and equal-area sphere sampling. Sped it up from ~1000 to <b>~2100 users/sec</b> via a picker cache. FastAPI front end, deployed on Render + Neon.
+        A reproducible data generator where <b>all randomness lives in PL/pgSQL stored procedures</b>. Designed a stateless hash-based PRNG robust to parallel / out-of-order calls; implemented Box-Muller and equal-area sphere sampling. Sped it up from ~1000 to <b>~2100 users/sec</b> via a picker cache. FastAPI backend, deployed on Render + Neon.
       </div>
-      <div class="stack"><span>PostgreSQL</span><span>PL-pgSQL</span><span>FastAPI</span><span>Docker</span><span>Render</span></div>
+      <div class="stack"><span>PostgreSQL</span><span>PL/pgSQL</span><span>FastAPI</span><span>Docker</span><span>Render</span></div>
     </div>
 
     <div class="project">
       <div class="proj-top">
-        <div class="proj-name">Mining Ops — anomaly-detection dashboard</div>
+        <div class="proj-name">Mining Ops<span class="proj-tag"><span data-lang="ru">аномалии</span><span data-lang="en">anomalies</span></span></div>
         <div class="proj-links">
           <a href="https://amelylina-weyland-yutani-mining.streamlit.app"><span data-lang="ru">демо →</span><span data-lang="en">demo →</span></a>
           <a href="https://github.com/amelylina/weyland-yutani-mining"><span data-lang="ru">код →</span><span data-lang="en">code →</span></a>
         </div>
       </div>
       <div class="proj-desc" data-lang="ru">
-        Streamlit-дашборд с <b>четырьмя настраиваемыми тестами на аномалии</b> (IQR, Z-score, скользящее среднее, тест Граббса), графики Plotly с трендами и <b>экспорт PDF-отчёта</b> в один клик. Чистая модульная структура; читает живой CSV-фид, сгенерированный в Google Spreadsheets.
+        Streamlit-дашборд с <b>четырьмя настраиваемыми тестами на аномалии</b> (IQR, Z-score, скользящее среднее, тест Граббса), графики Plotly с трендами и <b>экспорт PDF</b> в один клик. Чистая модульная структура; читает живой CSV-фид.
       </div>
       <div class="proj-desc" data-lang="en">
-        Streamlit dashboard with <b>four configurable anomaly tests</b> (IQR, Z-score, moving average, Grubbs'), Plotly charts with trendlines, and one-click <b>PDF report export</b>. Clean modular structure; reads a live CSV feed generated in Google Sheets.
+        Streamlit dashboard with <b>four configurable anomaly tests</b> (IQR, Z-score, moving average, Grubbs'), Plotly charts with trendlines, and one-click <b>PDF export</b>. Clean modular structure; reads a live CSV feed.
       </div>
       <div class="stack"><span>Python</span><span>Streamlit</span><span>pandas</span><span>Plotly</span><span>ReportLab</span></div>
     </div>
@@ -362,39 +350,75 @@
   </section>
 
   <section>
+    <div class="sec-head"><span data-lang="ru">Опыт работы</span><span data-lang="en">Experience</span></div>
+
+    <div class="entry">
+      <div class="entry-top">
+        <div>
+          <span class="entry-title"><span data-lang="ru">Инженер-программист — Python / R&amp;D</span><span data-lang="en">Software Engineer — Python / R&amp;D</span></span>, <span class="entry-org">AX Technology</span>
+        </div>
+        <div class="entry-meta"><span data-lang="ru">май 2024 – фев 2025</span><span data-lang="en">May 2024 – Feb 2025</span></div>
+      </div>
+      <ul>
+        <li data-lang="ru"><b>Единственный разработчик</b> внутреннего Python-инструмента, <b>которым пользуются сотни пользователей</b>; спроектировала сложную <b>процедурную систему генерации</b> (параметрические сцены собираются из простых пользовательских вводов), сократив ручную работу на порядки.</li>
+        <li data-lang="en"><b>Sole developer</b> of an internal Python tool <b>used by hundreds of users</b>; engineered a complex <b>procedural generation system</b> (parametric scenes assembled from simple user inputs), cutting manual work by orders of magnitude.</li>
+
+        <li data-lang="ru">Спроектировала <b>эвристический алгоритм поиска</b> для задачи упаковки в 2D-пространстве — выше плотность размещения, лучше итоговое качество.</li>
+        <li data-lang="en">Designed a <b>heuristic search algorithm</b> for a 2D packing problem — higher placement density and better output quality.</li>
+
+        <li data-lang="ru">Реализовала серверную обработку данных на <b>NumPy / Pillow</b> (операции с матрицами) и написала <b>собственные C++ библиотеки</b> для ресурсоёмких вычислений; вела проект в Git.</li>
+        <li data-lang="en">Built server-side data processing with <b>NumPy / Pillow</b> (matrix operations) and wrote <b>custom C++ libraries</b> for performance-critical computation; ran the project in Git.</li>
+      </ul>
+      <div class="entry-note" data-lang="ru"><b>Контекст:</b> R&amp;D-инструмент для процедурной 3D-генерации — но задачи были инженерные: алгоритмы, обработка данных, производительность, поддержка пользователей.</div>
+      <div class="entry-note" data-lang="en"><b>Context:</b> the product was a procedural-3D R&amp;D tool, but the work was core engineering — algorithms, data processing, performance, and supporting users.</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-top">
+        <div>
+          <span class="entry-title"><span data-lang="ru">Самозанятость: разработка инструментов и 3D</span><span data-lang="en">Self-employed: tooling &amp; 3D development</span></span>
+        </div>
+        <div class="entry-meta">~2017 – 2024</div>
+      </div>
+      <div class="entry-note" data-lang="ru">С 16 лет самостоятельно <b>создавала, продавала и поддерживала</b> цифровые продукты и инструменты для активного сообщества, выстроив стабильный доход. Эта самостоятельная работа напрямую привела к первой инженерной должности — и сформировала навык доводить проект до пользователя в одиночку.</div>
+      <div class="entry-note" data-lang="en">From age 16, independently <b>built, sold, and supported</b> digital products and tooling for an active community, sustaining a steady income. This self-directed work led directly to the first engineering role — and built the habit of shipping a project to real users solo.</div>
+    </div>
+  </section>
+
+  <section>
     <div class="grid2">
       <div>
         <div class="sec-head"><span data-lang="ru">Образование и обучение</span><span data-lang="en">Education &amp; training</span></div>
 
-        <div class="entry" style="margin-bottom:14px">
-          <div class="entry-title"><span data-lang="ru">Программа «Инженер данных»</span><span data-lang="en">Data Engineering Program</span></div>
+        <div class="entry" style="margin-bottom:15px">
+          <div class="entry-title"><span data-lang="ru">Профессия «Инженер данных»</span><span data-lang="en">Data Engineer Program</span></div>
           <div class="entry-org" style="font-size:14px">Yandex Practicum</div>
-          <div class="entry-meta" style="margin-top:3px"><span data-lang="ru">завершение июль 2026 · 4–5 практических проектов</span><span data-lang="en">completing Jul 2026 · 4–5 hands-on projects</span></div>
+          <div class="entry-meta" style="margin-top:3px"><span data-lang="ru">2026 · PostgreSQL, Spark, Hadoop / HDFS, Vertica,</br> Kafka, Airflow, Yandex.Cloud</span><span data-lang="en">2026 · PostgreSQL, Spark, Hadoop / HDFS, Vertica,</br> Kafka, Airflow, Yandex.Cloud</span></div>
         </div>
 
-        <div class="entry" style="margin-bottom:14px">
+        <div class="entry" style="margin-bottom:15px">
           <div class="entry-title"><span data-lang="ru">Стажировка по Data Engineering</span><span data-lang="en">Data Engineering Internship</span></div>
           <div class="entry-org" style="font-size:14px">Itransition</div>
-          <div class="entry-meta" style="margin-top:3px"><span data-lang="ru">2-месячный интенсив · сертификат</span><span data-lang="en">2-month intensive · certificate</span></div>
+          <div class="entry-meta" style="margin-top:3px"><span data-lang="ru">2-мес. интенсив · защита проекта</span><span data-lang="en">2-month intensive · project defense</span></div>
         </div>
 
         <div class="entry">
-          <div class="entry-title"><span data-lang="ru">Бакалавр, лечебное дело</span><span data-lang="en">BSc, General Medicine</span></div>
+          <div class="entry-title"><span data-lang="ru">Врач, лечебное дело</span><span data-lang="en">MD, General Medicine</span></div>
           <div class="entry-org" style="font-size:14px"><span data-lang="ru">Ташкентский гос. стоматологический институт</span><span data-lang="en">Tashkent State Dental Institute</span></div>
-          <div class="entry-meta" style="margin-top:3px"><span data-lang="ru">окончание 2025</span><span data-lang="en">graduated 2025</span></div>
+          <div class="entry-meta" style="margin-top:3px"><span data-lang="ru">2025 · клинические интернатуры, в т.ч. хирургия</span><span data-lang="en">2025 · clinical internships incl. surgery</span></div>
         </div>
       </div>
       <div>
         <div class="sec-head"><span data-lang="ru">Языки и прочее</span><span data-lang="en">Languages &amp; more</span></div>
         <ul class="mini">
-          <li data-lang="ru"><b>Русский</b> — родной</li>
-          <li data-lang="en"><b>Russian</b> — native</li>
-          <li data-lang="ru"><b>Английский</b> — advanced (IELTS 7.5)</li>
-          <li data-lang="en"><b>English</b> — advanced (IELTS 7.5)</li>
+          <li data-lang="ru"><b>Русский</b> — родной · <b>Английский</b> — advanced (IELTS 7.5)</li>
+          <li data-lang="en"><b>Russian</b> — native · <b>English</b> — advanced (IELTS 7.5)</li>
           <li data-lang="ru"><b>Узбекский</b> — базовый · <b>Китайский</b> — базовое чтение</li>
           <li data-lang="en"><b>Uzbek</b> — basic · <b>Chinese</b> — basic reading</li>
-          <li data-lang="ru">Опыт спортивного программирования (C++, Codeforces)</li>
-          <li data-lang="en">Competitive programming background (C++, Codeforces)</li>
+          <li data-lang="ru">Опыт <b>спортивного программирования</b> (C++, Codeforces)</li>
+          <li data-lang="en"><b>Competitive programming</b> background (C++, Codeforces)</li>
+          <li data-lang="ru"><b>Открыта к удалёнке и релокации</b></li>
+          <li data-lang="en"><b>Open to remote work and relocation</b></li>
           <li data-lang="ru"><b>Люблю горные походы</b> — покоряю вершины вокруг Ташкента, в том числе Большой Чимган</li>
           <li data-lang="en"><b>Avid hiker</b> — love climbing the mountains around Tashkent, Bolshoy Chimgan among them</li>
         </ul>
@@ -413,8 +437,6 @@
     document.getElementById('btn-en').classList.toggle('active', lang==='en');
     document.title = (lang==='ru' ? 'Эвелина Исмагилова' : 'Evelina Ismagilova') + ' — Data Engineer';
   }
-  // Auto-fill any element with class "year" with the current year
-  document.querySelectorAll('.year').forEach(function(el){ el.textContent = new Date().getFullYear(); });
   // Open in EN automatically for non-Russian browsers
   if ((navigator.language || '').slice(0,2) !== 'ru'){ setLang('en'); }
 </script>
