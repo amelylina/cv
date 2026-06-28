@@ -238,17 +238,17 @@
   </header>
 
   <p class="summary" data-lang="ru">
-    Data-инженер, проектирующий <strong>пайплайны и аналитические платформы</strong> на Python и SQL — от загрузки источников до star-schema и BI.
-    Я создаю <strong>идемпотентные ETL-процессы на Airflow / dbt</strong> с инкрементальной загрузкой по watermark, многомерным моделированием и обеспечением качества данных на каждом уровне.
-    Имею <strong>1,5 лет опыта работы с коммерческим Python</strong> (инструмент, используемый сотнями пользователей) и production-shaped портфолио.<br>
-    Квалифицированный <strong>врач</strong>, выбравшая разработку систем — я комфортно чувствую себя в условиях стресса, неопределенности и высокой стоимости ошибок.<br>
-    <strong>Английский — продвинутый уровень (IELTS 7.5)</strong>, родной русский.
+    Инженер данных, <strong>проектирующий пайплайны и аналитические платформы</strong> на Python и SQL — от загрузки данных из источников до моделирования по схеме «звезда» и построения BI-решений.
+    Создаю <strong>идемпотентные ETL-процессы на Airflow и dbt</strong> с инкрементальной загрузкой на основе watermark, размерным моделированием и контролем качества данных на каждом уровне.
+    Имею <strong>1,5+ лет коммерческого опыта разработки на Python</strong> и портфолио платформ уровня production, которые самостоятельно проектирую, разрабатываю и сопровождаю. 
+    <strong>Дипломированный врач</strong>, осознанно выбравший разработку информационных систем. Комфортно работаю в условиях высокого давления, неопределённости и высокой цены ошибки.
+    <strong>Английский — Advanced (IELTS 7.5)</strong>, русский — родной.
   </p>
   <p class="summary" data-lang="en">
-    Data engineer who designs <strong>pipelines and analytics platforms</strong> in Python and SQL — from source ingestion through star-schema modeling to BI.
-    I build <strong>idempotent ETL on Airflow / dbt</strong> with watermark-based incremental loads, dimensional modeling, and data quality at every layer.
-    Backed by <strong>1.5+ years of commercial Python</strong> (a tool used by hundreds of users) and a portfolio of production-shaped platforms.<br>
-    Qualified <strong>physician</strong> who chose to build systems instead — I work comfortably under stress, uncertainty, and the high cost of error.<br>
+    Data engineer who <strong>designs pipelines and analytics platforms</strong> in Python and SQL — from source ingestion through star-schema modeling to BI. 
+    I build <strong>idempotent ETL on Airflow / dbt</strong> with watermark-based incremental loads, dimensional modeling, and data quality at every layer. 
+    Backed by <strong>1.5+ years of commercial Python</strong> and a portfolio of production-shaped platforms I build and operate solo.
+    </strong> Qualified <strong>physician</strong> who chose to build systems instead — I work comfortably under pressure, ambiguity, and a high cost of error. 
     <strong>English — Advanced (IELTS 7.5)</strong>, native Russian.
   </p>
 
@@ -283,15 +283,15 @@
         </div>
       </div>
       <div class="proj-desc" data-lang="ru">
-        Аналитическое хранилище для маркетплейса доставки, поднимается <b>одной командой локально</b>. Сводит <b>четыре разнородных источника</b> (документы / Mongo-паттерн, PostgreSQL, REST API, S3) в слои <b>stg → dds → cdm</b>: стейдж через Airflow с инкрементальной загрузкой по watermark, ядро измерений на dbt, <b>SCD2-снапшоты</b> и пять бизнес-витрин. <b>Asset-driven</b> оркестрация (dbt-трансформации стартуют по data-assets, не по таймеру), <b>сквозная observability</b> (история загрузок и результаты тестов пишутся в etl-схему) и <b>демо инкрементальности</b>: дозалив N строк → загружаются ровно новые, открываются версии SCD2.
+        Аналитическое хранилище данных для маркетплейса доставки, которое разворачивается <b>одной локальной командой.</b> Объединяет <b>четыре гетерогенных источника</b> (документная БД / Mongo-подобная структура, PostgreSQL, REST API и S3) в слои <b>stg → dds → cdm</b>: загрузка данных через Airflow с инкрементальной обработкой на основе watermark, размерное ядро на dbt с <b>SCD2</b> и пятью бизнес-витринами. <b>Asset-driven оркестрация</b> (dbt-трансформации запускаются по появлению данных, а не по таймеру), <b>сквозная наблюдаемость</b> (история загрузок и результаты тестов логируются в схему etl) и <b>наглядная демонстрация инкрементальной загрузки</b>: добавьте N строк → будут загружены только новые записи, а новые версии SCD2 откроются автоматически.
       </div>
       <div class="proj-desc" data-lang="en">
-        A delivery-marketplace analytics warehouse that stands up with <b>one local command</b>. Unifies <b>four heterogeneous sources</b> (document / Mongo pattern, PostgreSQL, REST API, S3) into <b>stg → dds → cdm</b> layers: Airflow ingestion with watermark-based incremental loads, a dbt dimensional core with <b>SCD2 snapshots</b>, and five business marts. <b>Asset-driven</b> orchestration (dbt transforms fire on data assets, not a timer), <b>end-to-end observability</b> (load history and test results logged to an etl schema), and a <b>provable incremental demo</b>: append N rows → exactly the new rows load and SCD2 versions open.
+        A delivery-marketplace analytics warehouse that stands up with <b>one local command.</b> Unifies <b>four heterogeneous sources</b> (document / Mongo pattern, PostgreSQL, REST API, S3) into <b>stg → dds → cdm</b> layers: Airflow ingestion with watermark-based incremental loads, a dbt dimensional core with <b>SCD2 snapshots</b>, and five business marts. <b>Asset-driven</b> orchestration (dbt transforms fire on data assets, not a timer), <b>end-to-end observability</b> (load history and test results logged to an etl schema), and a <b>provable incremental demo</b>: append N rows → exactly the new rows load and SCD2 versions open.
       </div>
       <div class="stack"><span>Apache Airflow</span><span>dbt</span><span>PostgreSQL</span><span>Docker Compose</span><span>Alembic</span><span>MinIO / S3</span><span>FastAPI</span><span>SCD2</span></div>
     </div>
 
-    <div class="project">
+    <div class="project flagship">
       <div class="proj-top">
         <div class="proj-name">NYC Mobility × Air Quality<span class="proj-tag">Fabric · Spark</span></div>
         <div class="proj-links">
@@ -304,7 +304,7 @@
       <div class="proj-desc" data-lang="en">
         End-to-end <b>medallion lakehouse (Bronze → Silver → Gold)</b> on Microsoft Fabric: <b>six sources</b> across three domains (NYC taxi, OpenAQ air quality, World Bank / ECB economics) via four ingestion patterns. <b>Metadata-driven orchestration</b>: a per-partition state machine, watermarks, a metadata warehouse with stored procedures; PySpark ingestion with a <b>threaded rate limiter</b> and a sensor-to-zone spatial join. Great Expectations data quality with Telegram alerts. Star-schema → Power BI semantic model and report.
       </div>
-      <div class="stack"><span>Microsoft Fabric</span><span>PySpark</span><span>Delta Lake</span><span>T-SQL</span><span>GeoPandas</span><span>Great Expectations</span><span>Power BI</span><span>Grafana</span><span>Azure Key Vault</span></div>
+      <div class="stack"><span>Microsoft Fabric</span><span>PySpark</span><span>Delta Lake</span><span>T-SQL</span><span>GeoPandas</span><span>Great Expectations</span><span>Power BI</span><span>Grafana</span><span>Azure Key Vault</span><span>Power Automate</span></div>
     </div>
 
     <div class="project">
@@ -324,23 +324,6 @@
       <div class="stack"><span>PostgreSQL</span><span>PL/pgSQL</span><span>FastAPI</span><span>Docker</span><span>Render</span></div>
     </div>
 
-    <div class="project">
-      <div class="proj-top">
-        <div class="proj-name">Mining Ops<span class="proj-tag"><span data-lang="ru">аномалии</span><span data-lang="en">anomalies</span></span></div>
-        <div class="proj-links">
-          <a href="https://amelylina-weyland-yutani-mining.streamlit.app"><span data-lang="ru">демо →</span><span data-lang="en">demo →</span></a>
-          <a href="https://github.com/amelylina/weyland-yutani-mining"><span data-lang="ru">код →</span><span data-lang="en">code →</span></a>
-        </div>
-      </div>
-      <div class="proj-desc" data-lang="ru">
-        Streamlit-дашборд с <b>четырьмя настраиваемыми тестами на аномалии</b> (IQR, Z-score, скользящее среднее, тест Граббса), графики Plotly с трендами и <b>экспорт PDF</b> в один клик. Чистая модульная структура; читает живой CSV-фид.
-      </div>
-      <div class="proj-desc" data-lang="en">
-        Streamlit dashboard with <b>four configurable anomaly tests</b> (IQR, Z-score, moving average, Grubbs'), Plotly charts with trendlines, and one-click <b>PDF export</b>. Clean modular structure; reads a live CSV feed.
-      </div>
-      <div class="stack"><span>Python</span><span>Streamlit</span><span>pandas</span><span>Plotly</span><span>ReportLab</span></div>
-    </div>
-
     <p class="summary" data-lang="ru" style="font-size:13.5px;margin:14px 0 0">
       Больше — на <a class="plain" href="https://github.com/amelylina">github.com/amelylina</a>.
     </p>
@@ -355,22 +338,42 @@
     <div class="entry">
       <div class="entry-top">
         <div>
+          <span class="entry-title"><span data-lang="ru">Инженер данных — стажировка</span><span data-lang="en">Data Engineer — Internship</span></span>, <span class="entry-org">Itransition</span>
+        </div>
+        <div class="entry-meta"><span data-lang="ru">2026</span><span data-lang="en">2026</span></div>
+      </div>
+      <ul>
+        <li data-lang="ru">Самостоятельно за <b>три недели</b> разработала <b>medallion lakehouse на Microsoft Fabric (Bronze → Silver → Gold)</b>, начав без предварительного опыта работы с Fabric, Delta и Spark. Объединила <b>шесть источников из трёх предметных областей</b> — поездки такси Нью-Йорка (ежемесячные Parquet-файлы), качество воздуха OpenAQ (постраничный JSON API), а также данные World Bank по ВВП и курсы валют ECB — используя четыре различных шаблона загрузки. Построила аналитическое хранилище по схеме «звезда», позволившее решать поставленные кросс-доменные задачи (корреляция мобильности и загрязнения воздуха, расчёт выручки в USD/EUR, многолетние тренды).</li>
+        <li data-lang="en">Built an end-to-end <b>medallion lakehouse on Microsoft Fabric (Bronze → Silver → Gold)</b> solo in <b>three weeks</b>, starting with no prior Fabric / Delta / Spark experience. Unified <b>six sources across three domains</b> — NYC taxi (monthly Parquet), OpenAQ air quality (paginated JSON API), and World Bank GDP + ECB FX — via four distinct ingestion patterns, modeled into a star-schema warehouse that answered the brief's cross-domain questions (mobility-vs-pollution correlation, USD/EUR revenue, multi-year trends).</li>
+
+        <li data-lang="ru">Разработала <b>собственную metadata-driven систему watermark</b> (машина состояний для каждой партиции и хранилище метаданных со stored procedures), <b>многопоточный rate limiter</b> для загрузки через API и пространственное сопоставление датчиков с географическими зонами. При этом <b>работала в рамках ограничений пробной версии Fabric</b>, оптимизируя Spark-задачи для минимального потребления вычислительной ёмкости.</li>
+        <li data-lang="en">Engineered a <b>custom metadata-driven watermarking system</b> (per-partition state machine + metadata warehouse with stored procedures), a <b>threaded rate limiter</b> for API ingestion, and a sensor-to-zone spatial join — while <b>operating within Fabric trial limits</b>, tuning Spark to minimize capacity consumption.</li>
+
+        <li data-lang="ru">Полностью выполнила <b>финальное оценочное задание стажировки</b> — набор интеграций production-уровня: проверки качества данных на <b>Great Expectations</b> с <b>Telegram-ботом для оповещений</b> (собственный сервис), <b>Power Automate</b>-рассылку с итогами свежих загрузок и панель мониторинга в <b>Grafana</b>, построенную на базе <b>БД с обогащением погодными данными</b> и временными метками.</li>
+        <li data-lang="en">Delivered the internship's <b>final evaluation task</b> — a set of production-grade integrations — in full: Great Expectations data-quality checks with a <b>Telegram alerting bot</b> (own service), <b>Power Automate</b> email digests summarizing freshly loaded tables, and a <b>Grafana</b> dashboard backed by a timestamped <b>weather-enrichment database</b>.</li>
+
+        <li data-lang="ru">Защитила проект перед техническими экспертами компании, представив его как <b>инженерное, code-first применение платформы, обычно используемой преимущественно для BI</b>.</li>
+        <li data-lang="en">Defended the project to company reviewers as a <b>code-first engineering use of a tool usually treated as BI-only</b>.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-top">
+        <div>
           <span class="entry-title"><span data-lang="ru">Инженер-программист — Python / R&amp;D</span><span data-lang="en">Software Engineer — Python / R&amp;D</span></span>, <span class="entry-org">AX Technology</span>
         </div>
         <div class="entry-meta"><span data-lang="ru">май 2024 – фев 2025</span><span data-lang="en">May 2024 – Feb 2025</span></div>
       </div>
       <ul>
-        <li data-lang="ru"><b>Единственный разработчик</b> внутреннего Python-инструмента, <b>которым пользуются сотни пользователей</b>; спроектировала сложную <b>процедурную систему генерации</b> (параметрические сцены собираются из простых пользовательских вводов), сократив ручную работу на порядки.</li>
-        <li data-lang="en"><b>Sole developer</b> of an internal Python tool <b>used by hundreds of users</b>; engineered a complex <b>procedural generation system</b> (parametric scenes assembled from simple user inputs), cutting manual work by orders of magnitude.</li>
+        <li data-lang="ru"><b>Единственный разработчик</b> внутреннего <b>инструмента процедурной 3D-генерации</b>, созданного на основе <b>Blender Python API</b>. По сути, это был управляемый «режим сборки», который формализовал стандарты студии по созданию рендеров, позволяя любому оператору получать соответствующие требованиям, готовые для клиента архитектурные визуализации. Инструмент стал <b>основным рабочим интерфейсом для команды из ~40–50 3D-дженералистов</b>, а также <b>платформой, на которой обучали новых сотрудников</b> вместо самого Blender. Созданные с его помощью материалы публиковались как <b>рендеры квартир на клиентском сайте компании</b> (рынок недвижимости Дубая).</li>
+        <li data-lang="en"><b>Sole developer</b> of an internal <b>procedural 3D-generation tool</b> built on the <b>Blender Python API</b> — effectively a guided "build mode" that encoded the studio's rendering guidelines so any operator could produce compliant, client-ready architectural renders. It became the <b>primary production interface for a team of ~40–50 3D generalists</b>, and the tool <b>new hires were trained on</b> in place of Blender itself; its output shipped as <b>apartment renders on the company's client-facing site</b> (Dubai real-estate).</li>
 
-        <li data-lang="ru">Спроектировала <b>эвристический алгоритм поиска</b> для задачи упаковки в 2D-пространстве — выше плотность размещения, лучше итоговое качество.</li>
-        <li data-lang="en">Designed a <b>heuristic search algorithm</b> for a 2D packing problem — higher placement density and better output quality.</li>
+        <li data-lang="ru">Разработала базовые <b>системы Geometry Nodes</b>, позволяющие собирать сложные параметрические сцены из простых входных данных, представляя каждую сцену как детерминированное параметризованное преобразование вместо ручного моделирования. Через Python-аддон пользователи управляли только высокоуровневыми параметрами. Полностью отвечала за <b>R&D-цикл</b>: проектирование и проверку подходов к процедурной генерации, экспериментирование с различными решениями и дополнение графов узлов Python-кодом там, где возможностей Geometry Nodes было недостаточно.</li>
+        <li data-lang="en">Engineered the underlying <b>geometry-node systems</b> to assemble complex parametric scenes from simple inputs — expressing each build as a deterministic, parameterized transformation rather than hand-modeling — exposed through a Python addon where users adjust only high-level knobs. Drove <b>R&D end-to-end</b>: prototyping generation patterns, testing approaches, and backing the node graph with Python wherever node-only logic fell short.</li>
 
-        <li data-lang="ru">Реализовала серверную обработку данных на <b>NumPy / Pillow</b> (операции с матрицами) и написала <b>собственные C++ библиотеки</b> для ресурсоёмких вычислений; вела проект в Git.</li>
-        <li data-lang="en">Built server-side data processing with <b>NumPy / Pillow</b> (matrix operations) and wrote <b>custom C++ libraries</b> for performance-critical computation; ran the project in Git.</li>
+        <li data-lang="ru">Отдельно: разработала <b>эвристический алгоритм двумерной упаковки (2D bin packing)</b>, обеспечивший более высокую плотность размещения объектов, а также реализовала <b>серверную обработку данных</b> (NumPy / Pillow) и <b>собственные библиотеки на C++</b> для вычислений, критичных к производительности. На всех этапах разработки использовала Git.</li>
+        <li data-lang="en">Separately: designed a <b>heuristic 2D bin-packing algorithm</b> (higher placement density) and built <b>server-side data processing</b> (NumPy / Pillow) plus <b>custom C++ libraries</b> for performance-critical computation. Git throughout.</li>
       </ul>
-      <div class="entry-note" data-lang="ru"><b>Контекст:</b> R&amp;D-инструмент для процедурной 3D-генерации — но задачи были инженерные: алгоритмы, обработка данных, производительность, поддержка пользователей.</div>
-      <div class="entry-note" data-lang="en"><b>Context:</b> the product was a procedural-3D R&amp;D tool, but the work was core engineering — algorithms, data processing, performance, and supporting users.</div>
     </div>
 
     <div class="entry">
@@ -392,14 +395,8 @@
 
         <div class="entry" style="margin-bottom:15px">
           <div class="entry-title"><span data-lang="ru">Профессия «Инженер данных»</span><span data-lang="en">Data Engineer Program</span></div>
-          <div class="entry-org" style="font-size:14px">Yandex Practicum</div>
+          <div class="entry-org" style="font-size:14px">Yandex Practicum Pro</div>
           <div class="entry-meta" style="margin-top:3px"><span data-lang="ru">2026 · PostgreSQL, Spark, Hadoop / HDFS, Vertica,</br> Kafka, Airflow, Yandex.Cloud</span><span data-lang="en">2026 · PostgreSQL, Spark, Hadoop / HDFS, Vertica,</br> Kafka, Airflow, Yandex.Cloud</span></div>
-        </div>
-
-        <div class="entry" style="margin-bottom:15px">
-          <div class="entry-title"><span data-lang="ru">Стажировка по Data Engineering</span><span data-lang="en">Data Engineering Internship</span></div>
-          <div class="entry-org" style="font-size:14px">Itransition</div>
-          <div class="entry-meta" style="margin-top:3px"><span data-lang="ru">2-мес. интенсив · защита проекта</span><span data-lang="en">2-month intensive · project defense</span></div>
         </div>
 
         <div class="entry">
