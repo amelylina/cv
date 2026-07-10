@@ -1,446 +1,485 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Эвелина Исмагилова — Data Engineer</title>
-<meta name="description" content="Data Engineer — Python / SQL. ETL orchestration (Airflow, dbt), dimensional modeling, medallion lakehouses on Microsoft Fabric. Open to remote / relocation.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#1a1d23;
-    --ink-soft:#4a4f5a;
-    --ink-faint:#6b7280;
-    --paper:#fffefd;
-    --line:#dce0e6;
-    --accent:#144369;
-    --accent-soft:#e6edf4;
-    --chip:#eef1f5;
-    --max:880px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    font-family:'Inter',-apple-system,system-ui,sans-serif;
-    color:var(--ink);
-    background:var(--paper);
-    line-height:1.55;
-    font-size:15px;
-    padding:48px 24px 80px;
-  }
-  .sheet{max-width:var(--max);margin:0 auto;position:relative}
-
-  /* ---------- language toggle ---------- */
-  .lang-toggle{
-    position:fixed;top:20px;right:20px;z-index:50;
-    display:inline-flex;border:1px solid var(--line);border-radius:8px;
-    overflow:hidden;font-family:'JetBrains Mono',monospace;font-size:12px;
-    background:var(--paper);box-shadow:0 1px 4px rgba(20,67,105,.08);
-  }
-  .lang-toggle button{
-    border:0;background:transparent;color:var(--ink-faint);
-    padding:7px 13px;cursor:pointer;font:inherit;letter-spacing:.5px;
-    transition:background .15s,color .15s;
-  }
-  .lang-toggle button.active{background:var(--accent);color:#fff}
-  .lang-toggle button:not(.active):hover{color:var(--accent)}
-
-  /* ---------- header ---------- */
-  header{
-    display:flex;justify-content:space-between;align-items:flex-end;
-    gap:24px;flex-wrap:wrap;
-    border-bottom:2px solid var(--ink);
-    padding-bottom:20px;
-  }
-  .name{
-    font-family:'Fraunces',serif;
-    font-weight:500;
-    font-size:42px;
-    line-height:1;
-    letter-spacing:-.5px;
-  }
-  .role{
-    font-family:'JetBrains Mono',monospace;
-    font-size:13px;
-    color:var(--accent);
-    margin-top:10px;
-    letter-spacing:.3px;
-  }
-  .contact{
-    text-align:right;
-    font-size:13px;
-    color:var(--ink-soft);
-    line-height:1.7;
-  }
-  .contact a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line)}
-  .contact a:hover{color:var(--accent);border-color:var(--accent)}
-
-  /* ---------- summary ---------- */
-  .summary{
-    font-size:16px;
-    line-height:1.6;
-    color:var(--ink-soft);
-    margin:24px 0 8px;
-    max-width:66ch;
-  }
-  .summary strong{color:var(--ink);font-weight:600}
-
-  /* ---------- section scaffolding ---------- */
-  section{margin-top:34px}
-  .sec-head{
-    display:flex;align-items:baseline;gap:12px;
-    font-family:'JetBrains Mono',monospace;
-    font-size:12px;
-    letter-spacing:1.5px;
-    text-transform:uppercase;
-    color:var(--ink-faint);
-    margin-bottom:18px;
-  }
-  .sec-head::after{
-    content:"";flex:1;height:1px;background:var(--line);
-  }
-
-  /* ---------- skills ---------- */
-  .skills{display:grid;grid-template-columns:150px 1fr;gap:7px 18px;font-size:14px}
-  .skills dt{font-weight:600;color:var(--ink)}
-  .skills dd{color:var(--ink-soft)}
-  .skills dd b{color:var(--ink);font-weight:500}
-
-  /* ---------- entries ---------- */
-  .entry{margin-bottom:26px}
-  .entry:last-child{margin-bottom:0}
-  .entry-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
-  .entry-title{font-weight:600;font-size:15.5px}
-  .entry-org{color:var(--accent);font-weight:500}
-  .entry-meta{
-    font-family:'JetBrains Mono',monospace;
-    font-size:12px;color:var(--ink-faint);white-space:nowrap;
-  }
-  .entry ul{list-style:none;margin-top:9px}
-  .entry li{
-    position:relative;padding-left:18px;margin-bottom:5px;
-    color:var(--ink-soft);font-size:14px;line-height:1.5;
-  }
-  .entry li::before{
-    content:"";position:absolute;left:2px;top:9px;
-    width:5px;height:5px;border-radius:50%;background:var(--accent);
-  }
-  .entry li b{color:var(--ink);font-weight:600}
-  .entry-note{color:var(--ink-soft);font-size:14px;line-height:1.5;margin-top:7px}
-  .entry-note b{color:var(--ink);font-weight:600}
-
-  /* ---------- projects ---------- */
-  .project{
-    border:1px solid var(--line);
-    border-radius:10px;
-    padding:18px 20px;
-    margin-bottom:14px;
-    background:#fff;
-  }
-  .project.flagship{border-color:var(--accent-soft);box-shadow:0 1px 0 var(--accent-soft), 0 0 0 3px var(--accent-soft) inset;background:linear-gradient(180deg,#fbfcfe 0%,#fff 60%)}
-  .project:last-child{margin-bottom:0}
-  .proj-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
-  .proj-name{font-weight:600;font-size:15.5px}
-  .proj-tag{
-    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.5px;
-    text-transform:uppercase;color:var(--accent);
-    background:var(--accent-soft);border-radius:4px;padding:2px 7px;
-    margin-left:9px;vertical-align:middle;white-space:nowrap;
-  }
-  .proj-links{font-family:'JetBrains Mono',monospace;font-size:11.5px;white-space:nowrap}
-  .proj-links a{
-    color:var(--accent);text-decoration:none;
-    border:1px solid var(--accent-soft);background:var(--accent-soft);
-    padding:2px 8px;border-radius:5px;margin-left:6px;
-    display:inline-block;
-  }
-  .proj-links a:hover{background:var(--accent);color:#fff}
-  .proj-desc{color:var(--ink-soft);font-size:14px;margin:8px 0 10px;line-height:1.5}
-  .proj-desc b{color:var(--ink);font-weight:600}
-  .stack{display:flex;flex-wrap:wrap;gap:6px}
-  .stack span{
-    font-family:'JetBrains Mono',monospace;font-size:11px;
-    background:var(--chip);color:var(--ink-soft);
-    padding:3px 8px;border-radius:5px;
-  }
-
-  /* ---------- two-col footer block ---------- */
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:34px}
-  .mini li{position:relative;padding-left:16px;margin-bottom:4px;color:var(--ink-soft);font-size:14px;list-style:none}
-  .mini li::before{content:"—";position:absolute;left:0;color:var(--accent)}
-  .mini b{color:var(--ink);font-weight:600}
-
-  a.plain{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-soft)}
-  a.plain:hover{border-color:var(--accent)}
-
-  /* ---------- language switching ---------- */
-  [data-lang]{display:none}
-  body.lang-ru [data-lang="ru"]{display:revert}
-  body.lang-en [data-lang="en"]{display:revert}
-  body.lang-ru span[data-lang="ru"],
-  body.lang-en span[data-lang="en"],
-  body.lang-ru b[data-lang="ru"],
-  body.lang-en b[data-lang="en"]{display:inline}
-
-  @media (max-width:640px){
-    body{padding:28px 16px 60px;font-size:14px}
-    .name{font-size:30px}
-    .contact{text-align:left}
-    header{align-items:flex-start}
-    .skills{grid-template-columns:1fr;gap:2px 0}
-    .skills dt{margin-top:8px}
-    .grid2{grid-template-columns:1fr;gap:24px}
-    .lang-toggle{top:12px;right:12px}
-  }
-
-  @media print{
-    .lang-toggle{display:none}
-    body{padding:0;background:#fff;font-size:9.5px}
-    .sheet{max-width:100%}
-    .project{break-inside:avoid;background:#fff;padding:11px 15px;margin-bottom:9px}
-    .project.flagship{box-shadow:none;border-color:var(--accent);background:#fff}
-    .entry{margin-bottom:14px}
-    .grid2 .entry{margin-bottom:10px}
-    section{margin-top:15px;break-inside:avoid}
-    .summary{margin:16px 0 6px}
-    .proj-desc{margin:6px 0 8px}
-    .proj-links a{border-color:var(--line)}
-    a{color:var(--ink)!important}
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Эвелина Исмагилова — Data Engineer</title>
+    <meta name="description" content="Data Engineer — Python / SQL. ETL orchestration (Airflow, dbt, Spark, Kafka), dimensional modeling, Data Vault 2.0, medallion lakehouses on Microsoft Fabric. Open to remote / relocation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --ink:#1a1d23;
+            --ink-soft:#4a4f5a;
+            --ink-faint:#6b7280;
+            --paper:#fffefd;
+            --line:#dce0e6;
+            --accent:#144369;
+            --accent-soft:#e6edf4;
+            --chip:#eef1f5;
+            --max:880px;
+        }
+        *{box-sizing:border-box;margin:0;padding:0}
+        html{-webkit-text-size-adjust:100%}
+        body{
+            font-family:'Inter',-apple-system,system-ui,sans-serif;
+            color:var(--ink);
+            background:var(--paper);
+            line-height:1.55;
+            font-size:15px;
+            padding:48px 24px 80px;
+        }
+        .sheet{max-width:var(--max);margin:0 auto;position:relative}
+        
+        /* ---------- language toggle ---------- */
+        .lang-toggle{
+            position:fixed;top:20px;right:20px;z-index:50;
+            display:inline-flex;border:1px solid var(--line);border-radius:8px;
+            overflow:hidden;font-family:'JetBrains Mono',monospace;font-size:12px;
+            background:var(--paper);box-shadow:0 1px 4px rgba(20,67,105,.08);
+        }
+        .lang-toggle button{
+            border:0;background:transparent;color:var(--ink-faint);
+            padding:7px 13px;cursor:pointer;font:inherit;letter-spacing:.5px;
+            transition:background .15s,color .15s;
+        }
+        .lang-toggle button.active{background:var(--accent);color:#fff}
+        .lang-toggle button:not(.active):hover{color:var(--accent)}
+        
+        /* ---------- header ---------- */
+        header{
+            display:flex;justify-content:space-between;align-items:flex-end;
+            gap:24px;flex-wrap:wrap;
+            border-bottom:2px solid var(--ink);
+            padding-bottom:20px;
+        }
+        .name{
+            font-family:'Fraunces',serif;
+            font-weight:500;
+            font-size:42px;
+            line-height:1;
+            letter-spacing:-.5px;
+        }
+        .role{
+            font-family:'JetBrains Mono',monospace;
+            font-size:13px;
+            color:var(--accent);
+            margin-top:10px;
+            letter-spacing:.3px;
+        }
+        .contact{
+            text-align:right;
+            font-size:13px;
+            color:var(--ink-soft);
+            line-height:1.7;
+            flex:1 1 300px;
+            min-width:0;
+        }
+        .contact a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line)}
+        .contact a:hover{color:var(--accent);border-color:var(--accent)}
+        
+        /* ---------- summary ---------- */
+        .summary{
+            font-size:16px;
+            line-height:1.6;
+            color:var(--ink-soft);
+            margin:24px 0 8px;
+            max-width:70ch;
+        }
+        .summary strong,.summary b{color:var(--ink);font-weight:600}
+        
+        /* ---------- section scaffolding ---------- */
+        section{margin-top:34px}
+        .sec-head{
+            display:flex;align-items:baseline;gap:12px;
+            font-family:'JetBrains Mono',monospace;
+            font-size:12px;
+            letter-spacing:1.5px;
+            text-transform:uppercase;
+            color:var(--ink-faint);
+            margin-bottom:18px;
+        }
+        .sec-head::after{
+            content:"";flex:1;height:1px;background:var(--line);
+        }
+        
+        /* ---------- skills ---------- */
+        .skills{display:grid;grid-template-columns:180px 1fr;gap:7px 18px;font-size:14px}
+        .skills dt{font-weight:600;color:var(--ink)}
+        .skills dd{color:var(--ink-soft)}
+        .skills dd b{color:var(--ink);font-weight:500}
+        
+        /* ---------- entries ---------- */
+        .entry{margin-bottom:26px}
+        .entry:last-child{margin-bottom:0}
+        .entry-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+        .entry-title{font-weight:600;font-size:15.5px}
+        .entry-org{color:var(--accent);font-weight:500}
+        .entry-meta{
+            font-family:'JetBrains Mono',monospace;
+            font-size:12px;color:var(--ink-faint);white-space:nowrap;
+        }
+        .entry-context{
+            color:var(--ink-faint);font-size:13px;font-style:italic;
+            line-height:1.45;margin-top:5px;
+        }
+        .entry ul{list-style:none;margin-top:9px}
+        .entry li{
+            position:relative;padding-left:18px;margin-bottom:5px;
+            color:var(--ink-soft);font-size:14px;line-height:1.5;
+        }
+        .entry li::before{
+            content:"";position:absolute;left:2px;top:9px;
+            width:5px;height:5px;border-radius:50%;background:var(--accent);
+        }
+        .entry li b{color:var(--ink);font-weight:600}
+        .entry-note{color:var(--ink-soft);font-size:14px;line-height:1.5;margin-top:7px}
+        .entry-note b{color:var(--ink);font-weight:600}
+        
+        /* ---------- projects ---------- */
+        .project{
+            border:1px solid var(--line);
+            border-radius:10px;
+            padding:18px 20px;
+            margin-bottom:14px;
+            background:#fff;
+        }
+        .project.flagship{border-color:var(--accent-soft);box-shadow:0 1px 0 var(--accent-soft), 0 0 0 3px var(--accent-soft) inset;background:linear-gradient(180deg,#fbfcfe 0%,#fff 60%)}
+        .project:last-child{margin-bottom:0}
+        .proj-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+        .proj-name{font-weight:600;font-size:15.5px}
+        .proj-tag{
+            font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.5px;
+            text-transform:uppercase;color:var(--accent);
+            background:var(--accent-soft);border-radius:4px;padding:2px 7px;
+            margin-left:9px;vertical-align:middle;white-space:nowrap;
+        }
+        .proj-links{font-family:'JetBrains Mono',monospace;font-size:11.5px;white-space:nowrap}
+        .proj-links a{
+            color:var(--accent);text-decoration:none;
+            border:1px solid var(--accent-soft);background:var(--accent-soft);
+            padding:2px 8px;border-radius:5px;margin-left:6px;
+            display:inline-block;
+        }
+        .proj-links a:hover{background:var(--accent);color:#fff}
+        .proj-links .private{
+            color:var(--ink-faint);font-style:italic;
+            padding:2px 8px;margin-left:6px;display:inline-block;
+        }
+        .proj-desc{color:var(--ink-soft);font-size:14px;margin:8px 0 10px;line-height:1.5}
+        .proj-desc b{color:var(--ink);font-weight:600}
+        .stack{display:flex;flex-wrap:wrap;gap:6px}
+        .stack span{
+            font-family:'JetBrains Mono',monospace;font-size:11px;
+            background:var(--chip);color:var(--ink-soft);
+            padding:3px 8px;border-radius:5px;
+        }
+        .also{
+            color:var(--ink-soft);font-size:13.5px;line-height:1.55;
+            margin-top:16px;padding-top:13px;border-top:1px dotted var(--line);
+        }
+        .also b{color:var(--ink);font-weight:600}
+        
+        /* ---------- two-col footer block ---------- */
+        .grid2{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+        .mini li{position:relative;padding-left:16px;margin-bottom:4px;color:var(--ink-soft);font-size:14px;list-style:none}
+        .mini li::before{content:"—";position:absolute;left:0;color:var(--accent)}
+        .mini b{color:var(--ink);font-weight:600}
+        
+        a.plain{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-soft)}
+        a.plain:hover{border-color:var(--accent)}
+        
+        /* ---------- language switching ---------- */
+        [data-lang]{display:none}
+        body.lang-ru [data-lang="ru"]{display:revert}
+        body.lang-en [data-lang="en"]{display:revert}
+        body.lang-ru span[data-lang="ru"],
+        body.lang-en span[data-lang="en"],
+        body.lang-ru b[data-lang="ru"],
+        body.lang-en b[data-lang="en"]{display:inline}
+        
+        @media (max-width:640px){
+            body{padding:28px 16px 60px;font-size:14px}
+            .name{font-size:30px}
+            .contact{text-align:left}
+            header{align-items:flex-start}
+            .skills{grid-template-columns:1fr;gap:2px 0}
+            .skills dt{margin-top:8px}
+            .grid2{grid-template-columns:1fr;gap:24px}
+            .lang-toggle{top:12px;right:12px}
+        }
+        
+        @media print{
+            .lang-toggle{display:none}
+            body{padding:0;background:#fff;font-size:9.5px}
+            .sheet{max-width:100%}
+            .project{break-inside:avoid;background:#fff;padding:11px 15px;margin-bottom:9px}
+            .project.flagship{box-shadow:none;border-color:var(--accent);background:#fff}
+            .entry{margin-bottom:14px}
+            .grid2 .entry{margin-bottom:10px}
+            section{margin-top:15px;break-inside:avoid}
+            .summary{margin:16px 0 6px}
+            .proj-desc{margin:6px 0 8px}
+            .proj-links a{border-color:var(--line)}
+            a{color:var(--ink)!important}
+        }
+    </style>
 </head>
 <body class="lang-ru">
-
-<div class="lang-toggle">
-  <button id="btn-ru" class="active" onclick="setLang('ru')">RU</button>
-  <button id="btn-en" onclick="setLang('en')">EN</button>
-</div>
-
-<div class="sheet">
-
-  <header>
-    <div>
-      <div class="name">
-        <span data-lang="ru">Эвелина Исмагилова</span>
-        <span data-lang="en">Evelina Ismagilova</span>
-      </div>
-      <div class="role">DATA ENGINEER · PYTHON / SQL · AIRFLOW · DBT · SPARK</div>
+    
+    <div class="lang-toggle">
+        <button id="btn-ru" class="active" onclick="setLang('ru')">RU</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
     </div>
-    <div class="contact">
-      <span data-lang="ru">Ташкент, Узбекистан (UTC+5) · открыта к удалёнке / релокации</span>
-      <span data-lang="en">Tashkent, Uzbekistan (UTC+5) · open to remote / relocation</span><br>
-      <a href="mailto:ismevelina@gmail.com">ismevelina@gmail.com</a> · +998 33 375 47 48<br>
-      <a href="https://github.com/amelylina">github.com/amelylina</a> ·
-      <a href="https://t.me/pepe_the_king_prawn">Telegram</a>
+    
+    <div class="sheet">
+        
+        <header>
+            <div>
+                <div class="name">
+                    <span data-lang="ru">Эвелина Исмагилова</span>
+                    <span data-lang="en">Evelina Ismagilova</span>
+                </div>
+                <div class="role">DATA ENGINEER · PYTHON <br> SQL · AIRFLOW · DBT · SPARK · KAFKA</div>
+            </div>
+            <div class="contact">
+                <span data-lang="ru">Ташкент, Узбекистан (UTC+5) · открыта к удалёнке / релокации</span>
+                <span data-lang="en">Tashkent, Uzbekistan (UTC+5) · open to remote / relocation</span><br>
+                <a href="mailto:ismevelina@gmail.com">ismevelina@gmail.com</a> · +998 33 375 47 48<br>
+                <a href="https://github.com/amelylina">github.com/amelylina</a> ·
+                <a href="https://t.me/pepe_the_king_prawn">Telegram</a>
+            </div>
+        </header>
+        
+        <p class="summary" data-lang="ru">
+            Дата-инженер, строю production ETL на <strong>Airflow / dbt / Spark</strong> — платформы полного цикла от ingestion до BI.
+            <strong>Довожу системы до конца в одиночку:</strong> пайплайны на метаданных, воспроизводимая инкрементальная загрузка и наблюдаемость, доказывающая, что всё работает.
+            Врач по образованию, перешедшая в дата-инженерию. Спокойно работаю под давлением и там, где цена ошибки высока.
+        </p>
+        <p class="summary" data-lang="en">
+            Data engineer building production ETL on <strong>Airflow / dbt / Spark</strong> — complete platforms from ingestion through orchestration to BI.
+            <strong>Ships end-to-end systems solo:</strong> metadata-driven pipelines, reproducible incremental loads, and the observability to prove they work.
+            Qualified physician turned data engineer. Comfortable operating under pressure and delivering reliable systems where the cost of error is high.
+        </p>
+        
+        <section>
+            <div class="sec-head"><span data-lang="ru">Технические навыки</span><span data-lang="en">Technical skills</span></div>
+            <dl class="skills">
+                <dt><span data-lang="ru">Языки</span><span data-lang="en">Languages</span></dt>
+                <dd><b>Python</b> <span data-lang="ru">(основной)</span><span data-lang="en">(primary)</span>, <b>SQL</b> (PostgreSQL / PL-pgSQL, T-SQL, Vertica)</dd>
+                
+                <dt><span>Data Engineering</span></dt>
+                <dd>
+                    <span data-lang="en"><b>Apache Airflow</b>, <b>dbt</b>, <b>Apache Spark / PySpark</b> (batch &amp; Structured Streaming), <b>Kafka</b>, Microsoft Fabric, Delta Lake, MongoDB, MinIO/S3</span>
+                    <span data-lang="ru"><b>Apache Airflow</b>, <b>dbt</b>, <b>Apache Spark / PySpark</b> (batch и Structured Streaming), <b>Kafka</b>, Microsoft Fabric, Delta Lake, MongoDB, MinIO/S3</span>
+                </dd>
+                
+                <dt><span data-lang="ru">Моделирование и архитектура</span><span data-lang="en">Data Modeling &amp; Architecture</span></dt>
+                <dd>
+                    <span data-lang="en"><b>Star / Snowflake</b>, <b>Data Vault 2.0</b>, DWH, Lakehouse &amp; Data Lake, conformed dimensions, surrogate keys</span>
+                    <span data-lang="ru"><b>Звезда / Снежинка</b>, <b>Data Vault 2.0</b>, DWH, Lakehouse и Data Lake, конформные измерения, суррогатные ключи</span>
+                </dd>
+                
+                <dt><span data-lang="ru">ETL и качество данных</span><span data-lang="en">ETL &amp; Data Quality</span></dt>
+                <dd>
+                    <span data-lang="en"><b>Incremental loading</b> (watermark, partition), <b>idempotent upserts</b>, <b>SCD2</b>, exactly-once semantics, dbt tests, Great Expectations</span>
+                    <span data-lang="ru"><b>Инкрементальная загрузка</b> (watermark, партиции), <b>идемпотентные апсерты</b>, <b>SCD2</b>, exactly-once, dbt-тесты, Great Expectations</span>
+                </dd>
+                
+                <dt><span data-lang="ru">Инфраструктура</span><span data-lang="en">Infrastructure</span></dt>
+                <dd>Docker, <b>Kubernetes</b> / Helm, FastAPI, REST API, Alembic, <span data-lang="ru">Telegram-боты</span><span data-lang="en">Telegram bots</span></dd>
+                
+                <dt><span data-lang="ru">SQL и BI</span><span data-lang="en">SQL &amp; BI</span></dt>
+                <dd>
+                    <span data-lang="en">CTEs, window functions, query optimization · <b>Power BI</b>, Grafana, Metabase</span>
+                    <span data-lang="ru">CTE, оконные функции, оптимизация запросов · <b>Power BI</b>, Grafana, Metabase</span>
+                </dd>
+            </dl>
+        </section>
+        
+        <section>
+            <div class="sec-head"><span data-lang="ru">Избранные проекты</span><span data-lang="en">Selected projects</span></div>
+            
+            <div class="project flagship">
+                <div class="proj-top">
+                    <div class="proj-name">ShrimpOverflow<span class="proj-tag">Airflow · dbt</span></div>
+                    <div class="proj-links">
+                        <a href="https://github.com/amelylina/shrimp-overflow#architecture"><span data-lang="ru">архитектура →</span><span data-lang="en">design doc →</span></a>
+                        <a href="https://github.com/amelylina/shrimp-overflow"><span data-lang="ru">код →</span><span data-lang="en">code →</span></a>
+                    </div>
+                </div>
+                <div class="proj-desc" data-lang="ru">
+                    Аналитическое хранилище для маркетплейса доставки: <b>4 гетерогенных источника</b> (PostgreSQL, REST API, S3, MongoDB) в слоях <b>stg → dds → cdm</b>. Asset-driven оркестрация на Airflow 3, инкрементальная загрузка по watermark, размерное ядро на dbt со <b>снапшотами SCD2</b> и пятью бизнес-витринами. Есть <b>воспроизводимое демо</b>, доказывающее, что повторный запуск обрабатывает только новые строки и корректно открывает версии SCD2.
+                </div>
+                <div class="proj-desc" data-lang="en">
+                    Delivery-marketplace analytics warehouse unifying <b>4 heterogeneous sources</b> (PostgreSQL, REST API, S3, MongoDB) into <b>stg → dds → cdm</b> layers: Airflow 3 asset-driven orchestration, watermark-based incremental loads, a dbt dimensional core with <b>SCD2 snapshots</b>, and five business marts. Ships a <b>reproducible demo proving</b> that re-runs process only new rows and open correct SCD2 versions.
+                </div>
+                <div class="stack"><span>Apache Airflow 3</span><span>dbt</span><span>PostgreSQL</span><span>Docker Compose</span><span>Alembic</span><span>MinIO / S3</span><span>FastAPI</span><span>SCD2</span></div>
+            </div>
+            
+            <div class="project flagship">
+                <div class="proj-top">
+                    <div class="proj-name"><span data-lang="ru">Fintech DWH — аналитика транзакций</span><span data-lang="en">Fintech DWH — Transaction Analytics</span><span class="proj-tag">Spark · Vertica · Kafka</span></div>
+                    <div class="proj-links">
+                        <a href="https://amelylina.github.io/fintech-dwh-design/"><span data-lang="ru">архитектура →</span><span data-lang="en">design doc →</span></a>
+                        <span class="private"><span data-lang="ru">код по запросу</span><span data-lang="en">code on request</span></span>
+                    </div>
+                </div>
+                <div class="proj-desc" data-lang="ru">
+                    Батчевый пайплайн: Postgres → Spark JDBC → <b>партиционированный Parquet на S3</b> → <b>COPY</b> в стейджинг Vertica → дневная агрегированная витрина → Metabase. Оркестрация в Airflow с catchup-бэкфиллом; витрина перестраивается по партициям, поэтому любой день пересчитывается идемпотентно. Kafka развёрнута мной в Yandex Cloud, консьюмер на <b>Spark Structured Streaming</b> сохранён рядом с батчевым путём — оба писателя дают идентичную раскладку на S3, и downstream-DAG’и не зависят от источника загрузки.
+                </div>
+                <div class="proj-desc" data-lang="en">
+                    Batch pipeline: Postgres → Spark JDBC → <b>partitioned Parquet on S3</b> → Vertica <b>COPY</b> into staging → daily aggregated mart → Metabase. Airflow orchestration with catchup backfill; the mart is rebuilt per-partition, so any day reprocesses idempotently. Kafka deployed on Yandex Cloud with a <b>Spark Structured Streaming</b> consumer retained alongside the batch path — both writers emit an identical S3 layout, leaving downstream DAGs agnostic to ingestion source.
+                </div>
+                <div class="stack"><span>Apache Spark</span><span>Spark Structured Streaming</span><span>Kafka</span><span>Vertica</span><span>Airflow</span><span>Yandex Object Storage (S3)</span><span>Metabase</span></div>
+            </div>
+            
+            <div class="project flagship">
+                <div class="proj-top">
+                    <div class="proj-name">NYC Mobility × Air Quality<span class="proj-tag">Fabric · Spark</span></div>
+                    <div class="proj-links">
+                        <a href="https://github.com/amelylina/taxi-air-quality-fabric/blob/main/docs/architecture.md"><span data-lang="ru">архитектура →</span><span data-lang="en">design doc →</span></a>
+                        <a href="https://github.com/amelylina/taxi-air-quality-fabric"><span data-lang="ru">код →</span><span data-lang="en">code →</span></a>
+                    </div>
+                </div>
+                <div class="proj-desc" data-lang="ru">
+                    Сквозной <b>medallion-lakehouse</b> на Microsoft Fabric: <b>6 источников</b> трёх доменов через 4 паттерна загрузки. Оркестрация на метаданных: <b>state-machine по партициям</b>, watermark’и, метахранилище; PySpark-инджест с многопоточным rate-limiter и гео-join сенсоров и зон. Star-schema → семантическая модель Power BI. В репозитории — раннбук и публичный реестр известных ограничений.
+                </div>
+                <div class="proj-desc" data-lang="en">
+                    End-to-end <b>medallion lakehouse</b> on Microsoft Fabric: <b>6 sources</b> across 3 domains via 4 ingestion patterns. Metadata-driven orchestration with a <b>per-partition state machine</b>, watermarks, and a metadata warehouse; PySpark ingestion with a threaded rate limiter and a sensor-to-zone spatial join. Star schema → Power BI semantic model. Ships a runbook and a public known-limitations register.
+                </div>
+                <div class="stack"><span>Microsoft Fabric</span><span>PySpark</span><span>Delta Lake</span><span>T-SQL</span><span>GeoPandas</span><span>Great Expectations</span><span>Power BI</span><span>Grafana</span></div>
+            </div>
+            
+            <div class="also" data-lang="ru">
+                Ещё: <b>SQL Faker</b> — воспроизводимый генератор данных, вся случайность в <b>хранимых процедурах PL/pgSQL</b>: stateless хеш-PRNG, устойчивый к параллельным вызовам; ускорен с ~1000 до <b>~2100 польз./сек</b>. Работает вживую: <a class="plain" href="https://sql-faker-1uu2.onrender.com/">демо →</a> <a class="plain" href="https://github.com/amelylina/sql-faker">код →</a> &nbsp;·&nbsp; В приватных репозиториях: коннекторы загрузки MongoDB, колоночное хранилище на Vertica, деплой сервисов через Kubernetes/Helm. Больше — на <a class="plain" href="https://github.com/amelylina">github.com/amelylina</a>.
+            </div>
+            <div class="also" data-lang="en">
+                Also: <b>SQL Faker</b> — reproducible data generator with all randomness in <b>PL/pgSQL stored procedures</b>, a stateless hash-based PRNG robust to parallel calls; optimized ~1000 → <b>~2100 users/sec</b>. Live at <a class="plain" href="https://sql-faker-1uu2.onrender.com/">demo →</a> <a class="plain" href="https://github.com/amelylina/sql-faker">code →</a> &nbsp;·&nbsp; Additional private work: MongoDB ingestion connectors, Vertica columnar warehousing, Kubernetes/Helm service deployment. More at <a class="plain" href="https://github.com/amelylina">github.com/amelylina</a>.
+            </div>
+        </section>
+        
+        <section>
+            <div class="sec-head"><span data-lang="ru">Опыт работы</span><span data-lang="en">Experience</span></div>
+            
+            <div class="entry">
+                <div class="entry-top">
+                    <div>
+                        <span class="entry-title"><span data-lang="ru">Инженер данных — стажировка</span><span data-lang="en">Data Engineer — Internship</span></span>, <span class="entry-org">Itransition</span>
+                    </div>
+                    <div class="entry-meta"><span data-lang="ru">апрель – июнь 2026</span><span data-lang="en">Apr – Jun 2026</span></div>
+                </div>
+                <ul>
+                    <li data-lang="ru">Выполнила итоговое задание стажировки, разработав <b>сквозную аналитическую платформу на Microsoft Fabric</b> с несколькими источниками и сценариями загрузки.</li>
+                    <li data-lang="en">Delivered the final internship evaluation by developing an <b>end-to-end analytics platform on Microsoft Fabric</b> spanning multiple datasets and ingestion patterns.</li>
+                    
+                    <li data-lang="ru"><b>Спроектировала переиспользуемую инфраструктуру</b> для управления метаданными, инкрементальной обработки, загрузки через API и автопроверки качества данных — новые источники подключались к уже готовой идемпотентной архитектуре.</li>
+                    <li data-lang="en"><b>Engineered reusable infrastructure</b> for metadata management, incremental processing, API ingestion, and automated data validation — new sources onboarded against an existing idempotent architecture.</li>
+                    
+                    <li data-lang="ru">Настроила операционный мониторинг: проверки качества на <b>Great Expectations</b> с <b>Telegram-ботом</b>, дайджесты в <b>Power Automate</b> и панель в <b>Grafana</b>.</li>
+                    <li data-lang="en">Implemented operational monitoring: <b>Great Expectations</b> data-quality checks with a <b>Telegram alerting bot</b>, <b>Power Automate</b> digests, and a <b>Grafana</b> dashboard.</li>
+                </ul>
+            </div>
+            
+            <div class="entry">
+                <div class="entry-top">
+                    <div>
+                        <span class="entry-title"><span data-lang="ru">Профессия «Инженер данных»</span><span data-lang="en">Data Engineer Program</span></span>, <span class="entry-org">Yandex Practicum Pro</span>
+                    </div>
+                    <div class="entry-meta"><span data-lang="ru">ноябрь 2025 – июнь 2026</span><span data-lang="en">Nov 2025 – Jun 2026</span></div>
+                </div>
+                <div class="entry-context" data-lang="ru">Диплом о профессиональной переподготовке. Девять спринтов — каждый проект добавлял источники или слои к предыдущей системе и защищался перед ревьюером. Приватные репозитории, доступны по запросу.</div>
+                <div class="entry-context" data-lang="en">Accredited retraining diploma. Nine sprints — each project added sources or layers to the previous system and was defended before a reviewer. Private repos, available on request.</div>
+                <ul>
+                    <li data-lang="ru"><b>Batch и streaming.</b> Kafka → Spark Structured Streaming, <b>foreachBatch</b> с join потока и статики из Postgres; задачи Spark/HDFS, параметризованные по диапазону дат для идемпотентных бэкфиллов, считают гео-витрины близости в партиционированный Parquet.</li>
+                    <li data-lang="en"><b>Batch &amp; streaming ingestion.</b> Kafka → Spark Structured Streaming with <b>foreachBatch</b> stream-static joins against Postgres; Spark/HDFS jobs parameterized by date range for idempotent backfills, computing geospatial proximity marts to partitioned Parquet.</li>
+                    
+                    <li data-lang="ru"><b>Три парадигмы хранилища.</b> Витрины «звезда» на Postgres; <b>Data Vault 2.0</b> на Vertica — расширен новыми хабами, линками и сателлитами без изменения существующей модели; слои stg → dds → cdm с мастер-DAG’ом оркестрации.</li>
+                    <li data-lang="en"><b>Three warehouse paradigms.</b> Star-schema marts on Postgres; a <b>Data Vault 2.0</b> on Vertica — extended with new hubs, links, and satellites without altering the existing model; stg → dds → cdm layering with a master orchestration DAG.</li>
+                    
+                    <li data-lang="ru"><b>Деплой в облако.</b> Развернула Kafka, Redis, Postgres и container registry в Yandex Cloud; контейнеризовала сервисы DDS и CDM и выкатила их в <b>Kubernetes через Helm</b>.</li>
+                    <li data-lang="en"><b>Deployed to cloud.</b> Provisioned Kafka, Redis, Postgres and a container registry on Yandex Cloud; containerized DDS and CDM services and shipped them to <b>Kubernetes via Helm</b>.</li>
+                </ul>
+            </div>
+            
+            <div class="entry">
+                <div class="entry-top">
+                    <div>
+                        <span class="entry-title"><span data-lang="ru">Инженер-программист — Python / R&amp;D</span><span data-lang="en">Software Engineer — Python / R&amp;D</span></span>, <span class="entry-org">AX Technology</span>
+                    </div>
+                    <div class="entry-meta"><span data-lang="ru">май 2024 – фев 2025</span><span data-lang="en">May 2024 – Feb 2025</span></div>
+                </div>
+                <ul>
+                    <li data-lang="ru"><b>Единственный разработчик</b> внутреннего инструмента процедурной 3D-генерации, ставшего <b>основным рабочим интерфейсом для ~40–50 дженералистов</b> — новые сотрудники учились на нём вместо Blender. Результат публиковался как клиентские рендеры квартир (недвижимость Дубая).</li>
+                    <li data-lang="en"><b>Sole developer</b> of an internal procedural 3D-generation tool that <b>became the primary production interface for ~40–50 generalists</b> — new hires trained on it instead of Blender. Output shipped as client-facing apartment renders (Dubai real-estate).</li>
+                    
+                    <li data-lang="ru">Разработала базовые <b>системы Geometry Nodes</b>, собирающие параметрические сцены из простых входных данных, доступные через <b>Python-аддон</b> к Blender API; полностью отвечала за R&amp;D-цикл.</li>
+                    <li data-lang="en">Built the underlying <b>geometry-node systems</b> to assemble parametric scenes from simple inputs, exposed through a <b>Python addon</b> on the Blender API; owned R&amp;D end-to-end.</li>
+                    
+                    <li data-lang="ru">Спроектировала эвристический алгоритм <b>2D bin-packing</b> и реализовала <b>серверную обработку данных</b> (NumPy / Pillow), а также собственные библиотеки на C++ для вычислений, критичных к производительности.</li>
+                    <li data-lang="en">Designed a heuristic <b>2D bin-packing</b> algorithm and built <b>server-side data processing</b> (NumPy/Pillow) plus custom C++ libraries for performance-critical compute.</li>
+                </ul>
+            </div>
+            
+            <div class="entry">
+                <div class="entry-top">
+                    <div>
+                        <span class="entry-title"><span data-lang="ru">Независимый разработчик — инструменты и 3D</span><span data-lang="en">Independent developer — tooling &amp; 3D</span></span>
+                    </div>
+                    <div class="entry-meta">2017 – 2024</div>
+                </div>
+                <div class="entry-note" data-lang="ru">Создавала, продавала и поддерживала софт для платящего сообщества <b>с 16 лет</b>, обеспечивая стабильный доход в течение медвуза. Семь лет в одиночку доводила продукты до реальных пользователей и поддерживала их — привычка, которая напрямую привела к первой инженерной должности.</div>
+                <div class="entry-note" data-lang="en">Built, sold, and supported software for a paying community <b>from age 16</b>, sustaining steady income through medical school. Seven years of shipping and maintaining products solo for real users — the habit that led directly to the first engineering role.</div>
+            </div>
+        </section>
+        
+        <section>
+            <div class="grid2">
+                <div>
+                    <div class="sec-head"><span data-lang="ru">Образование</span><span data-lang="en">Education</span></div>
+                    
+                    <div class="entry" style="margin-bottom:15px">
+                        <div class="entry-title"><span data-lang="ru">Диплом о профессиональной переподготовке — Инженер данных</span><span data-lang="en">Diploma of Professional Retraining — Data Engineer</span></div>
+                        <div class="entry-org" style="font-size:14px">Yandex Practicum Pro</div>
+                        <div class="entry-meta" style="margin-top:3px;white-space:normal"><span data-lang="ru">2025–2026 · аккредитованный диплом · проекты см. в разделе «Опыт»</span><span data-lang="en">2025–2026 · accredited diploma · see Experience for project detail</span></div>
+                    </div>
+                    
+                    <div class="entry">
+                        <div class="entry-title"><span data-lang="ru">Врач, лечебное дело</span><span data-lang="en">MD, General Medicine</span></div>
+                        <div class="entry-org" style="font-size:14px"><span data-lang="ru">Ташкентский гос. стоматологический институт</span><span data-lang="en">Tashkent State Dental Institute</span></div>
+                        <div class="entry-meta" style="margin-top:3px;white-space:normal"><span data-lang="ru">2019–2025 · клинические интернатуры, международные хирургические ротации</span><span data-lang="en">2019–2025 · clinical internships and international surgical rotations</span></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="sec-head"><span data-lang="ru">Языки и прочее</span><span data-lang="en">Languages &amp; more</span></div>
+                    <ul class="mini">
+                        <li data-lang="ru"><b>Русский</b> — родной · <b>Английский</b> — advanced (IELTS 7.5)</li>
+                        <li data-lang="en"><b>Russian</b> — native · <b>English</b> — advanced (IELTS 7.5)</li>
+                        <li data-lang="ru"><b>Узбекский</b> — базовый · <b>Китайский</b> — базовое чтение</li>
+                        <li data-lang="en"><b>Uzbek</b> — basic · <b>Chinese</b> — basic reading</li>
+                        <li data-lang="ru">Опыт <b>спортивного программирования</b> (C++, Codeforces)</li>
+                        <li data-lang="en"><b>Competitive programming</b> background (C++, Codeforces)</li>
+                        <li data-lang="ru"><b>Люблю горные походы</b> — покоряю вершины вокруг Ташкента, в том числе Большой Чимган</li>
+                        <li data-lang="en"><b>Avid hiker</b> — love climbing the mountains around Tashkent, Bolshoy Chimgan among them</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
     </div>
-  </header>
-
-  <p class="summary" data-lang="ru">
-    <strong>Дата-инженер с опытом разработки production ETL-платформ</strong> на Airflow, 
-    dbt и Spark — полный цикл обработки данных от ingestion до BI. 
-    Более <strong>1,5 лет коммерческой разработки на Python</strong> и портфолио production-grade проектов. 
-    Квалифицированный врач, осознанно перешедший в дата-инженерию. 
-    Уверенно работаю в условиях неопределённости и высокой цены ошибки.
-  </p>
-  <p class="summary" data-lang="en">
-    Data engineer building production ETL on <strong>Airflow / dbt / Spark</strong> — full data pipelines from ingestion to BI. 
-    Backed by <strong>1.5+ years of commercial Python</strong> and a portfolio of production-shaped platforms.
-    Qualified physician turned data engineer. Comfortable operating under pressure and delivering reliable systems where the cost of error is high.
-  </p>
-
-  <section>
-    <div class="sec-head"><span data-lang="ru">Технические навыки</span><span data-lang="en">Technical skills</span></div>
-    <dl class="skills">
-      <dt><span data-lang="ru">Языки</span><span data-lang="en">Languages</span></dt>
-      <dd><b>Python</b> <span data-lang="ru">(основной)</span><span data-lang="en">(primary)</span>, <b>SQL</b> (PostgreSQL / PL-pgSQL, T-SQL, Vertica)</dd>
-
-      <dt><span>Data Engineering</span></dt>
-      <dd><b>Apache Airflow</b>, <b>dbt</b>, <b>Apache Spark/PySpark</b>, Kafka, Hadoop/HDFS, Microsoft Fabric, Delta Lake, MongoDB, MinIO/S3</dd>
-
-      <dt><span data-lang="ru">Data Modeling и Архитектура</span><span data-lang="en">Data Modeling &amp; Architecture</span></dt>
-      <dd>
-        <span data-lang="en"><b>Star / Snowflake</b>, <b>Data Vault 2.0</b>, <b>Anchor modeling</b>, <b>DWH</b>, <b>Lakehouse & Data Lake</b>, conformed dimensions, surrogate keys</span>
-        <span data-lang="ru"><b>Звезда / Снежинка</b>, <b>Data Vault 2.0</b>, <b>Якорная модель</b>, <b>DWH</b>, <b>Lakehouse & Data Lake</b>, конформные измерения, суррогатные ключи</span>
-      </dd>
-
-      <dt><span data-lang="ru">ETL и качество данных</span><span data-lang="en">ETL &amp; Data Quality</span></dt>
-      <dd>
-        <span data-lang="en"><b>Incremental loading</b> (watermark, partition), <b>idempotent upserts</b>, <b>SCD</b>, dbt tests, Great Expectations</span>
-        <span data-lang="ru"><b>Инкрементальная загрузка</b> (watermark, partition), <b>идемпотентные апсерты</b>, <b>SCD</b>, dbt тесты, Great Expectations</span>
-      </dd>
-
-      <dt><span data-lang="ru">SQL и Аналитика</span><span data-lang="en">SQL &amp; Analytics</span></dt>
-      <dd>
-        <span data-lang="en">CTEs, window functions, query optimization</span>
-        <span data-lang="ru">CTE, оконные функции, оптимизация запросов</span>
-      </dd>
-
-      <dt>BI &amp; <span data-lang="ru">сервисы</span><span data-lang="en">services</span></dt>
-      <dd>Power BI, Metabase, Grafana, Plotly · FastAPI, REST API, Docker, <span data-lang="ru">Telegram-боты</span><span data-lang="en">Telegram bots</span></dd>
-    </dl>
-  </section>
-
-  <section>
-    <div class="sec-head"><span data-lang="ru">Избранные проекты</span><span data-lang="en">Selected projects</span></div>
-
-    <div class="project flagship">
-      <div class="proj-top">
-        <div class="proj-name">ShrimpOverflow<span class="proj-tag">Airflow · dbt</span></div>
-        <div class="proj-links">
-          <a href="https://github.com/amelylina/shrimp-overflow"><span data-lang="ru">код →</span><span data-lang="en">code →</span></a>
-        </div>
-      </div>
-      <div class="proj-desc" data-lang="ru">
-        Аналитическое хранилище данных для маркетплейса доставки, объединяющее <b>4 гетерогенных источника</b> (PostgreSQL, REST API, S3, MongoDB) в слои <b>stg → dds → cdm</b>: загрузка через Airflow с инкрементальной обработкой на основе watermark, размерное ядро на dbt с <b>SCD2</b> и пятью бизнес-витринами. <b>Asset-driven оркестрация</b>, <b>сквозная наблюдаемость</b> (логирование истории загрузок и результатов тестов) и <b>доступное демо инкрементальности</b>.
-      </div>
-      <div class="proj-desc" data-lang="en">
-        A delivery-marketplace analytics warehouse project, that unifies <b>4 heterogeneous sources</b> (PostgreSQL, REST API, S3, MongoDB) into <b>stg → dds → cdm</b> layers: Airflow ingestion with watermark-based incremental loads, a dbt dimensional core with <b>SCD2 snapshots</b>, and five business marts. <b>Asset-driven</b> orchestration, <b>end-to-end observability</b> (load history and test results logs), and a <b>provable incremental demo</b>.
-      </div>
-      <div class="stack"><span>Apache Airflow</span><span>dbt</span><span>PostgreSQL</span><span>Docker Compose</span><span>Alembic</span><span>MinIO / S3</span><span>FastAPI</span><span>SCD2</span></div>
-    </div>
-
-    <div class="project flagship">
-      <div class="proj-top">
-        <div class="proj-name">NYC Mobility × Air Quality<span class="proj-tag">Fabric · Spark</span></div>
-        <div class="proj-links">
-          <a href="https://github.com/amelylina/taxi-air-quality-fabric"><span data-lang="ru">код →</span><span data-lang="en">code →</span></a>
-        </div>
-      </div>
-      <div class="proj-desc" data-lang="ru">
-        Сквозной <b>medallion-lakehouse</b> на Microsoft Fabric: <b>6 источников</b> трёх доменов (такси NYC, воздух OpenAQ, экономика World Bank / ECB) через 4 паттерна загрузки. <b>Оркестрация на метаданных</b>: state-machine по партициям, watermark’и, метахранилище со stored-процедурами; PySpark-инджест с <b>многопоточным rate-limiter</b> и гео-join сенсоров и зон. Star-schema → семантическая модель и отчёт Power BI.
-      </div>
-      <div class="proj-desc" data-lang="en">
-        End-to-end <b>medallion lakehouse</b> on Microsoft Fabric: <b>6 sources</b> across 3 domains (NYC taxi, OpenAQ air quality, World Bank / ECB economics) via 4 ingestion patterns. <b>Metadata-driven orchestration</b>: a per-partition state machine, watermarks, a metadata warehouse with stored procedures; PySpark ingestion with a <b>threaded rate limiter</b> and a sensor-to-zone spatial join. Star-schema → Power BI semantic model and report.
-      </div>
-      <div class="stack"><span>Microsoft Fabric</span><span>PySpark</span><span>Delta Lake</span><span>T-SQL</span><span>GeoPandas</span><span>Great Expectations</span><span>Power BI</span><span>Grafana</span><span>Azure Key Vault</span><span>Power Automate</span><span>Telegram Bot</span></div>
-    </div>
-
-    <div class="project">
-      <div class="proj-top">
-        <div class="proj-name">SQL Faker<span class="proj-tag">PL/pgSQL</span></div>
-        <div class="proj-links">
-          <a href="https://sql-faker-1uu2.onrender.com/"><span data-lang="ru">демо →</span><span data-lang="en">demo →</span></a>
-          <a href="https://github.com/amelylina/sql-faker"><span data-lang="ru">код →</span><span data-lang="en">code →</span></a>
-        </div>
-      </div>
-      <div class="proj-desc" data-lang="ru">
-        Воспроизводимый генератор данных, где <b>вся случайность живёт в хранимых процедурах PL/pgSQL</b> — stateless хеш-PRNG, устойчивый к параллельным вызовам. Ускорила с ~1000 до <b>~2100 польз./сек</b>. Бэкенд на FastAPI, деплой на Render + Neon.
-      </div>
-      <div class="proj-desc" data-lang="en">
-        Reproducible data generator with <b>all randomness in PL/pgSQL stored procedures</b> — a stateless hash-based PRNG robust to parallel calls. Optimized from ~1000 to <b>~2100 users/sec</b>. FastAPI, deployed on Render + Neon.
-      </div>
-      <div class="stack"><span>PostgreSQL</span><span>PL/pgSQL</span><span>FastAPI</span><span>Docker</span><span>Render</span></div>
-    </div>
-
-    <p class="summary" data-lang="ru" style="font-size:13.5px;margin:14px 0 0">
-      Больше — на <a class="plain" href="https://github.com/amelylina">github.com/amelylina</a>.
-    </p>
-    <p class="summary" data-lang="en" style="font-size:13.5px;margin:14px 0 0">
-      More at <a class="plain" href="https://github.com/amelylina">github.com/amelylina</a>.
-    </p>
-  </section>
-
-  <section>
-    <div class="sec-head"><span data-lang="ru">Опыт работы</span><span data-lang="en">Experience</span></div>
-
-    <div class="entry">
-      <div class="entry-top">
-        <div>
-          <span class="entry-title"><span data-lang="ru">Инженер данных — стажировка</span><span data-lang="en">Data Engineer — Internship</span></span>, <span class="entry-org">Itransition</span>
-        </div>
-        <div class="entry-meta"><span data-lang="ru">2026</span><span data-lang="en">2026</span></div>
-      </div>
-      <ul>
-        <li data-lang="ru">Выполнила итоговое задание стажировки, разработав <b>сквозную аналитическую платформу на Microsoft Fabric</b> с несколькими источниками данных и сценариями загрузки.</li>
-        <li data-lang="en">Delivered the final internship evaluation by developing an <b>end-to-end analytics platform on Microsoft Fabric</b> spanning multiple datasets and ingestion patterns.</li>
-
-        <li data-lang="ru"><b>Спроектировала и реализовала переиспользуемую инфраструктуру</b> для управления метаданными, инкрементальной обработки, загрузки данных через API и автоматической проверки качества данных.</li>
-        <li data-lang="en"><b>Engineered reusable infrastructure</b> for metadata management, incremental processing, API ingestion, and automated data validation.</li>
-
-        <li data-lang="ru">Настроила мониторинг и оповещения: проверки качества данных на <b>Great Expectations</b> с <b>Telegram-ботом</b>, дайджесты в <b>Power Automate</b> и панель мониторинга в <b>Grafana</b>.</li>
-        <li data-lang="en">Implemented operational monitoring: <b>Great Expectations</b> data-quality checks with a <b>Telegram alerting bot</b>, <b>Power Automate</b> digests, and a <b>Grafana</b> dashboard.</li>
-      </ul>
-    </div>
-
-    <div class="entry">
-      <div class="entry-top">
-        <div>
-          <span class="entry-title"><span data-lang="ru">Инженер-программист — Python / R&amp;D</span><span data-lang="en">Software Engineer — Python / R&amp;D</span></span>, <span class="entry-org">AX Technology</span>
-        </div>
-        <div class="entry-meta"><span data-lang="ru">май 2024 – фев 2025</span><span data-lang="en">May 2024 – Feb 2025</span></div>
-      </div>
-      <ul>
-        <li data-lang="ru"><b>Единственный разработчик</b> внутреннего инструмента процедурной 3D-генерации на <b>Blender Python API</b> — управляемый «режим сборки», ставший <b>основным рабочим интерфейсом</b> для команды из ~40–50 дженералистов и платформой обучения новых сотрудников вместо самого Blender. Результат публиковался как рендеры квартир на клиентском сайте (недвижимость Дубая).</li>
-        <li data-lang="en"><b>Sole developer</b> of an internal procedural 3D-generation tool on the <b>Blender Python API</b> — a guided "build mode" that <b>became the primary production interface</b> for ~40–50 generalists, and what new hires trained on instead of Blender. Output shipped as client-facing apartment renders (Dubai real-estate).</li>
-
-        <li data-lang="ru">Разработала базовые <b>системы Geometry Nodes</b>, собирающие параметрические сцены из простых входных данных, доступные через <b>Python-аддон</b>; полностью отвечала за R&D-цикл.</li>
-        <li data-lang="en">Built the underlying <b>geometry-node systems</b> to assemble parametric scenes from simple inputs, exposed through a <b>Python addon</b>; owned R&D end-to-end.</li>
-
-        <li data-lang="ru">Разработала эвристический алгоритм <b>2D bin-packing</b> и реализовала <b>серверную обработку данных</b> (NumPy / Pillow), а также собственные библиотеки на C++ для вычислений, критичных к производительности.</li>
-        <li data-lang="en">Designed a heuristic <b>2D bin-packing</b> algorithm and built <b>server-side data processing</b> (NumPy/Pillow) plus custom C++ libraries for performance-critical compute.</li>
-      </ul>
-    </div>
-
-    <div class="entry">
-      <div class="entry-top">
-        <div>
-          <span class="entry-title"><span data-lang="ru">Самозанятость: разработка инструментов и 3D</span><span data-lang="en">Self-employed: tooling &amp; 3D development</span></span>
-        </div>
-        <div class="entry-meta">~2017 – 2024</div>
-      </div>
-      <div class="entry-note" data-lang="ru">С 16 лет самостоятельно <b>создавала, продавала и поддерживала</b> цифровые продукты и инструменты для активного сообщества, выстроив стабильный доход. Эта самостоятельная работа напрямую привела к первой инженерной должности — и сформировала навык доводить проект до пользователя в одиночку.</div>
-      <div class="entry-note" data-lang="en">From age 16, independently <b>built, sold, and supported</b> digital products and tooling for an active community, sustaining a steady income. This self-directed work led directly to the first engineering role — and built the habit of shipping a project to real users solo.</div>
-    </div>
-  </section>
-
-  <section>
-    <div class="grid2">
-      <div>
-        <div class="sec-head"><span data-lang="ru">Образование и обучение</span><span data-lang="en">Education &amp; training</span></div>
-
-        <div class="entry" style="margin-bottom:15px">
-          <div class="entry-title"><span data-lang="ru">Профессия «Инженер данных»</span><span data-lang="en">Data Engineer Program</span></div>
-          <div class="entry-org" style="font-size:14px">Yandex Practicum Pro</div>
-          <div class="entry-meta" style="margin-top:3px"><span data-lang="ru">2026 · PostgreSQL, Spark, Hadoop / HDFS, Vertica,</br> Kafka, Airflow, Yandex.Cloud</span><span data-lang="en">2026 · PostgreSQL, Spark, Hadoop / HDFS, Vertica,</br> Kafka, Airflow, Yandex.Cloud</span></div>
-        </div>
-
-        <div class="entry">
-          <div class="entry-title"><span data-lang="ru">Врач, лечебное дело</span><span data-lang="en">MD, General Medicine</span></div>
-          <div class="entry-org" style="font-size:14px"><span data-lang="ru">Ташкентский гос. стоматологический институт</span><span data-lang="en">Tashkent State Dental Institute</span></div>
-          <div class="entry-meta" style="margin-top:3px"><span data-lang="ru">2019-2025 · клинические интернатуры,</br> включая международные ротации</span><span data-lang="en">2019-2025 · clinical internships</br> and international rotations</span></div>
-        </div>
-      </div>
-      <div>
-        <div class="sec-head"><span data-lang="ru">Языки и прочее</span><span data-lang="en">Languages &amp; more</span></div>
-        <ul class="mini">
-          <li data-lang="ru"><b>Русский</b> — родной · <b>Английский</b> — advanced (IELTS 7.5)</li>
-          <li data-lang="en"><b>Russian</b> — native · <b>English</b> — advanced (IELTS 7.5)</li>
-          <li data-lang="ru"><b>Узбекский</b> — базовый · <b>Китайский</b> — базовое чтение</li>
-          <li data-lang="en"><b>Uzbek</b> — basic · <b>Chinese</b> — basic reading</li>
-          <li data-lang="ru">Опыт <b>спортивного программирования</b> (C++, Codeforces)</li>
-          <li data-lang="en"><b>Competitive programming</b> background (C++, Codeforces)</li>
-          <li data-lang="ru"><b>Люблю горные походы</b> — покоряю вершины вокруг Ташкента, в том числе Большой Чимган</li>
-          <li data-lang="en"><b>Avid hiker</b> — love climbing the mountains around Tashkent, Bolshoy Chimgan among them</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-</div>
-
-<script>
-  function setLang(lang){
-    document.body.classList.remove('lang-ru','lang-en');
-    document.body.classList.add('lang-'+lang);
-    document.documentElement.lang = lang;
-    document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
-    document.getElementById('btn-en').classList.toggle('active', lang==='en');
-    document.title = (lang==='ru' ? 'Эвелина Исмагилова' : 'Evelina Ismagilova') + ' — Data Engineer';
-  }
-  // Open in EN automatically for non-Russian browsers
-  if ((navigator.language || '').slice(0,2) !== 'ru'){ setLang('en'); }
-</script>
+    
+    <script>
+        function setLang(lang){
+            document.body.classList.remove('lang-ru','lang-en');
+            document.body.classList.add('lang-'+lang);
+            document.documentElement.lang = lang;
+            document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
+            document.getElementById('btn-en').classList.toggle('active', lang==='en');
+            document.title = (lang==='ru' ? 'Эвелина Исмагилова' : 'Evelina Ismagilova') + ' — Data Engineer';
+        }
+        // Open in EN automatically for non-Russian browsers
+        if ((navigator.language || '').slice(0,2) !== 'ru'){ setLang('en'); }
+    </script>
 </body>
 </html>
